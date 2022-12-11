@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, Link } from 'react-router-dom';
+import Trip from './Trip';
+import Tour from './Tour';
 import './App.css';
 
 
@@ -13,28 +15,25 @@ function App() {
 
   const resArray = []
 
-  useEffect(() => {
-    tripsArray.forEach((trip) => {
-      axios({
-        url: "https://images-api.nasa.gov/search",
-        method: "GET",
-        dataResponse: "json",
-        params: {
-          q: trip
-        }
-      }).then((response) => {
-        // console.log(response.data);
-        resArray.push(response.data);
-      });
-    })
-    console.log(resArray)
-  }, []);
+ 
 
 
 
   return (
     <div className="App">
       <h1>Welcome to our super cool project!!</h1>
+      {
+      tripsArray.map((trip) => {
+        
+        return(
+          <Trip nameOfPlanet={trip}/>
+        )
+      }) 
+      }
+      <Routes>
+        <Route path="/"/>
+        <Route path="/trip/:tripID" element={<Trip />}></Route>
+      </Routes>
     </div>
   );
 }
