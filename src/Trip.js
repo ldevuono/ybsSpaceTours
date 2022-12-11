@@ -6,6 +6,7 @@ import axios from 'axios';
 
 const Trip = (props) =>{
     const [planet, setPlanet] = useState({});
+    const [nameOfPlanet, setNameOfPlanet] = useState("")
 
      useEffect(() => {
         axios({
@@ -17,7 +18,9 @@ const Trip = (props) =>{
             }
         }).then((response) => {
             console.log(response.data.collection.items[0].href);
-            setPlanet(response.data.collection.href);
+            setNameOfPlanet(props.nameOfPlanet[0].toUpperCase() + props.nameOfPlanet.slice(1));
+            setPlanet(response.data.collection.items[1].links[0].href);
+
            
             // resArray.push(response.data);
         });
@@ -30,6 +33,7 @@ const Trip = (props) =>{
         <div>
             <h1>Trip</h1>
             <ul>
+                <h1>{nameOfPlanet}</h1>
                 <img src={planet} alt="" />
                 <li><button>Choose a date</button></li>
                 <li><button>Start virtual tour</button></li>
