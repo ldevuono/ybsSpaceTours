@@ -5,47 +5,70 @@ import axios from 'axios';
 
 
 const TripContainer = (props) =>{
-    const [planet, setPlanet] = useState({});
-    const [nameOfPlanet, setNameOfPlanet] = useState("")
 
+    const tripArray = [
+      "Orion", "Crab Nebula", "Milky way", "mercury", "venus", "uranus", "pluto","saturn","sun"
+    ]
+  
+    const tripImages = [
+      "PIA08653", "PIA03606", "PIA12348", "PIA11766", "PIA00104", "PIA18182", "PIA09113","PIA01383","GSFC_20171208_Archive_e001434"
+    ]
+  
+    const [resArray, setResArray] = useState([])     
+    // const [planet, setPlanet] = useState({});
+    // const [nameOfPlanet, setNameOfPlanet] = useState("")
+    
+    useEffect(() => {
+        tripImages.map((trip) => {
+                
+            axios({
+                // url: "https://images-api.nasa.gov/search",
+                // method: "GET",
+                // dataResponse: "json",
+                // params: {
+                // q: props.nameOfPlanet
+                url: `https://proxy-ugwolsldnq-uc.a.run.app/https://images-api.nasa.gov/asset/${trip}`,
+                method: "GET",
+                dataResponse: "json",
+                // params: {
+                //     api_key: props.nameOfPlanet
+                // }
+            }).then((response) => {
+                // console.log(response.data.collection.items[0].href);
+                console.log(response.data.collection.items[1].href);
+                // setNameOfPlanet(props.nameOfTrip[0].toUpperCase() + props.nameOfTrip.slice(1));
+                setResArray( resArray => [ ...resArray , response.data.collection.items[1].href ] )
+                // resArray.push(response.data.collection.items[1].href);
+                
+                // resArray.push(response.data);
+                console.log(resArray)
+            });
 
-    console.log(props.nameOfTrip)
-     useEffect(() => {
-        axios({
-            // url: "https://images-api.nasa.gov/search",
-            // method: "GET",
-            // dataResponse: "json",
-            // params: {
-            // q: props.nameOfPlanet
-            url: `https://proxy-ugwolsldnq-uc.a.run.app/https://images-api.nasa.gov/asset/${props.nameOfTrip}`,
-            method: "GET",
-            dataResponse: "json",
-            // params: {
-            //     api_key: props.nameOfPlanet
-            // }
-        }).then((response) => {
-            // console.log(response.data.collection.items[0].href);
-            console.log(response.data.collection.items[1].href);
-            // setNameOfPlanet(props.nameOfTrip[0].toUpperCase() + props.nameOfTrip.slice(1));
-            setPlanet(response.data.collection.items[1].href);
-
-           
-            // resArray.push(response.data);
-        });
-        //   console.log(planet);
+        })
     }, []);
 
 
 
     return(
         <div>
-            <h1>TripContainer</h1>
             <ul>
-                <h1>{nameOfPlanet}</h1>
-                <img src={planet} alt="" />
-                <li><button>Choose a date</button></li>
-                <li><button>Start virtual tour</button></li>
-                <Tour />
+                {
+                    resArray.map( (trip,i) => {
+                        return(
+                            <li key={tripImages[i]}>
+                                <h2>TripContainer</h2>
+                                <h3>{tripArray[i]}</h3>
+                                <img src={trip} alt={`a beautiful image of ${tripArray[i]}`} />
+                                <ul>
+                                    <li><button>Choose a date</button></li>
+                                    <li><button>Start virtual tour</button></li>
+                                    <Tour />
+                                </ul>
+                            </li>
+
+                        )
+                    })
+                }
             </ul>
         </div>
     )
