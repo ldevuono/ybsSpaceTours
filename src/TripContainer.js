@@ -61,7 +61,7 @@ const TripContainer = (props) => {
                 {
                     resArray.map((trip, i) => {
                         return (
-                            <li key={tripImages[i]}>
+                            <li key={tripArray[i]}>
                                 <Link to={`/tour/${tripArray[i]}`}>
                                     <h2>TripContainer</h2>
                                     <h3>{tripArray[i]}</h3>

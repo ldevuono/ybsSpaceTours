@@ -15,7 +15,7 @@ function App() {
       <h1>Welcome to our super cool project!!</h1>
       <Routes>
         <Route path="/" element={<TripContainer />} />
-        <Route path="/TripContainer/:tripID" element={<Tour />}></Route>
+        <Route path="/TripContainer/:tripID" element={<Tour />} />
       </Routes>
     </div>
   );

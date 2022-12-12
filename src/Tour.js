@@ -17,13 +17,13 @@ const Tour = () => {
             // method: "GET",
             // dataResponse: "json",
             // params: {
-            q: tripID,
+            q: "saturn",
             method: "GET",
             dataResponse: "json",
         }).then((response) => {
             console.log(response.data.collection.items[1].href);
             setResArray(resArray => [...resArray, response.data.collection.items[1].href])
-            // console.log(resArray.length)
+            console.log(resArray)
         });
 
     }, []);
