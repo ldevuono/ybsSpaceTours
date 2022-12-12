@@ -13,10 +13,9 @@ function App() {
   return (
     <div className="App">
       <h1>Welcome to our super cool project!!</h1>
-      <TripContainer />
       <Routes>
-        <Route path="/"/>
-        {/* <Route path="/TripContainer/:tripID" element={<TripContainer />}></Route> */}
+        <Route path="/" element={<TripContainer />} />
+        <Route path="/TripContainer/:tripID" element={<Tour />}></Route>
       </Routes>
     </div>
   );
