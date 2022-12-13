@@ -1,0 +1,32 @@
+@use "./variables";
+@use "./typography";
+
+header{
+    padding: 20px;
+    ul{
+        display:flex;
+        justify-content: space-between;
+        img{
+            width: 400px;
+        }
+    }
+}
+
+.tripContainer{
+    display: flex;
+    flex-wrap: wrap;
+    .imgButtons{
+        width: calc(100% / 3);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .imgContainer{
+            max-width: 200px;
+            img {
+            object-fit: cover;
+            width: 200px;
+            height: 200px;
+            }
+        }
+    }
+}

@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import Tour from './Tour';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import './App.scss';
 
 
 const TripContainer = (props) => {
@@ -57,14 +58,15 @@ const TripContainer = (props) => {
 
     return (
         <div>
-            <ul>
+            <ul className="tripContainer">
                 {
                     resArray.map((trip, i) => {
                         return (
-                            <li key={tripArray[i]}>
-                                    <h2>TripContainer</h2>
+                            <li className="imgButtons" key={tripArray[i]}>
                                     <h3>{tripArray[i]}</h3>
-                                    <img src={trip} alt={`a beautiful image of ${tripArray[i]}`} />
+                                    <div className="imgContainer">
+                                        <img src={trip} alt={`a beautiful image of ${tripArray[i]}`} />
+                                    </div>
                                     <ul>
                                         <li><button>Choose a date</button></li>
                                     <Link to={`/tour/${tripArray[i]}`}>
