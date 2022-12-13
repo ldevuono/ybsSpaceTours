@@ -15,15 +15,15 @@ function App() {
     <div className="App">
       <div className="backgroundImg" />
       <header>
-      {/* img */}
-      <ul>
-        <li>
-          <img src={logo} alt="" />
-        </li>
-        <li>
-           <p>Tour Left <span>3</span></p>
-        </li>
-      </ul>
+        {/* img */}
+        <ul>
+          <li>
+            <img src={logo} alt="" />
+          </li>
+          <li>
+            <p>Tours Left <span>3</span></p>
+          </li>
+        </ul>
       </header>
       {/* tagline */}
       <h1>Welcome to a whole new world</h1>

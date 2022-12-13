@@ -18,7 +18,7 @@ const Tour = () => {
             method: "GET",
             dataResponse: "json",
             params: {
-                q: tripID 
+                q: tripID
             }
         }).then((response) => {
             console.log(response.data.collection.items[0].links[0].href);
@@ -32,14 +32,15 @@ const Tour = () => {
 
     return (
         <div>
-            <h1>Tour</h1>
+            <h1>{tripID}</h1>
             <ul>
-            <Link to={`/`}>
-                <li><button>Go back</button></li>
-            </Link>
+                <Link to={`/`}>
+                    <li><button>Go back</button></li>
+                </Link>
             </ul>
             <ul>
-                {resArray.map((trip) => {
+
+                {resArray.slice(5, 10).map((trip) => {
                     //console.log(trip)
                     return (
                         <li><img src={trip.links[0].href} /></li>

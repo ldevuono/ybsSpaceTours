@@ -1,31 +1,57 @@
 @use "./variables";
 @use "./typography";
 
-header{
+header {
     padding: 20px;
-    ul{
-        display:flex;
+
+    ul {
+        display: flex;
         justify-content: space-between;
-        img{
+
+        img {
             width: 400px;
+        }
+    }
+
+    p {
+        background-color: variables.$secondaryColour;
+        padding: 8px;
+        font-weight: 700;
+
+        span {
+            background-color: black;
+            padding: 8px;
+            // transform: rotate(45deg);
+            // border-radius: 50%;
+            display: inline-block;
         }
     }
 }
 
-.tripContainer{
+.tripContainer {
     display: flex;
     flex-wrap: wrap;
-    .imgButtons{
-        width: calc(100% / 3);
+
+    .imgButtons {
+        width: calc((100% / 3) - 20px);
+        margin: 10px;
         display: flex;
         flex-direction: column;
         align-items: center;
-        .imgContainer{
-            max-width: 200px;
+        border: 10px solid variables.$tertiaryColour;
+        padding: 10px;
+
+        &:hover {
+            border: 10px solid variables.$primaryColour;
+        }
+
+        .imgContainer {
+            max-width: 300px;
+
             img {
-            object-fit: cover;
-            width: 200px;
-            height: 200px;
+                object-fit: cover;
+                width: 300px;
+                height: 300px;
             }
         }
     }
