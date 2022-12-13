@@ -5,7 +5,7 @@ import axios from 'axios';
 
 const Tour = () => {
     const { tripID } = useParams();
-    const [resArray, setResArray] = useState([])
+    const [resArray, setResArray] = useState({})
 
 
     useEffect(() => {
@@ -14,16 +14,15 @@ const Tour = () => {
 
         axios({
             url: "https://images-api.nasa.gov/search",
-            // method: "GET",
-            // dataResponse: "json",
-            // params: {
-            q: "saturn",
             method: "GET",
             dataResponse: "json",
+            params: {
+                q: "saturn"
+            }
         }).then((response) => {
-            console.log(response.data.collection.items[1].href);
-            setResArray(resArray => [...resArray, response.data.collection.items[1].href])
-            console.log(resArray)
+            console.log(response.data);
+            setResArray(response.data)
+            // console.log(resArray)
         });
 
     }, []);

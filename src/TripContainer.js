@@ -7,7 +7,7 @@ import axios from 'axios';
 const TripContainer = (props) => {
 
     const tripArray = [
-        "Orion", "Crab Nebula", "Milky way", "mercury", "venus", "uranus", "pluto", "saturn", "sun"
+        "The Sword of Orion", "Crab Nebula", "Milky way", "mercury", "venus", "uranus", "pluto", "saturn", "sun"
     ]
 
     const tripImages = [
