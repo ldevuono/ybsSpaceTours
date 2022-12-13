@@ -62,16 +62,17 @@ const TripContainer = (props) => {
                     resArray.map((trip, i) => {
                         return (
                             <li key={tripArray[i]}>
-                                <Link to={`/tour/${tripArray[i]}`}>
                                     <h2>TripContainer</h2>
                                     <h3>{tripArray[i]}</h3>
                                     <img src={trip} alt={`a beautiful image of ${tripArray[i]}`} />
                                     <ul>
                                         <li><button>Choose a date</button></li>
+                                    <Link to={`/tour/${tripArray[i]}`}>
                                         <li><button>Start virtual tour</button></li>
                                         {/* <Tour /> */}
+                                    </Link>
                                     </ul>
-                                </Link>
+                                
                             </li>
 
                         )
