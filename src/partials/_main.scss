@@ -5,11 +5,17 @@ header {
     padding: 20px;
 
     ul {
-        display: flex;
+        // display: flex;
         justify-content: space-between;
 
         img {
             width: 400px;
+        }
+        .tripCounter {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            width: auto;
         }
     }
 
@@ -31,28 +37,35 @@ header {
 .tripContainer {
     display: flex;
     flex-wrap: wrap;
+    margin-bottom: 60px;
 
     .imgButtons {
         width: calc((100% / 3) - 20px);
-        margin: 10px;
+        margin: 10px auto 60px;
         display: flex;
         flex-direction: column;
         align-items: center;
-        border: 10px solid variables.$tertiaryColour;
-        padding: 10px;
-
-        &:hover {
+        // border: 10px solid variables.$tertiaryColour;
+        padding: 30px;
+        
+        &:hover, &:focus, &:focus-within {
             border: 10px solid variables.$primaryColour;
+            margin: 0 auto;
         }
 
         .imgContainer {
             max-width: 300px;
+            margin-bottom: 30px;
 
             img {
                 object-fit: cover;
                 width: 300px;
                 height: 300px;
             }
+        }
+        .buttonContainer {
+            display: flex;
+            flex-direction: column;
         }
     }
 }

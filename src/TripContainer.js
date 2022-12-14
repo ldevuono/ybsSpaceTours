@@ -1,5 +1,6 @@
 // import { useEffect, useState } from 'react';
 import TripBox from './TripBox';
+import WelcomeMessage from './WelcomeMessage';
 // import { Link } from 'react-router-dom';
 // import axios from 'axios';
 import './App.scss';
@@ -48,19 +49,22 @@ const TripContainer = () => {
 
 
     return (
-        <div>
-            <ul className="tripContainer">
-                {
-                    tripArray.map((trip) => {
-                        return (
-                            <TripBox 
+        <>
+        <WelcomeMessage />
+            <div className='wrapper'>
+                <ul className="tripContainer">
+                    {
+                        tripArray.map((trip) => {
+                            return (
+                                <TripBox 
                                 tripInfo = {trip}                            
-                            />
-                        )
-                    })
-                }
-            </ul>
-        </div>
+                                />
+                                )
+                            })
+                        }
+                </ul>
+            </div>
+        </>
     )
 }
 

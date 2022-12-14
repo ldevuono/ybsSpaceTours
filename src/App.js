@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Route, Routes, Link } from 'react-router-dom';
 import TripContainer from './TripContainer';
+import TripCounter from './TripCounter';
 import Tour from './Tour';
 import './App.scss';
 import logo from './assets/ybs-logo.svg';
@@ -20,13 +21,12 @@ function App() {
           <li>
             <img src={logo} alt="" />
           </li>
-          <li>
-            <p>Tours Left <span>3</span></p>
+          <li className='tripCounter'>
+            <TripCounter />
           </li>
         </ul>
       </header>
-      {/* tagline */}
-      <h1>Welcome to a whole new world</h1>
+
       {/* desc */}
 
       <Routes>

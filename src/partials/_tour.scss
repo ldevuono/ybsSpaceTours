@@ -1,0 +1,17 @@
+@use "./variables";
+@use "./typography";
+
+.goBackButton {
+  position: fixed;
+  top: 30px;
+  left: 30px;
+}
+
+li.tourImage {
+  max-width: none;
+  width: 100%;
+  img {
+    max-width: none;
+    width: 100%;
+  }
+}

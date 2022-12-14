@@ -15,7 +15,7 @@ const TripBox = (props) => {
               url: `https://proxy-ugwolsldnq-uc.a.run.app/https://images-api.nasa.gov/asset/${props.tripInfo.imgCode}`,
               method: "GET",
               dataResponse: "json"
-              
+
           }).then((response) => {
               
               console.log(response.data.collection.items[1].href);
@@ -39,7 +39,7 @@ const TripBox = (props) => {
         <div className="imgContainer">
             <img src={trip.imgLink} alt={`a beautiful image of ${trip.dest}`} />
         </div>
-        <ul>
+        <ul className='buttonContainer'>
             <li><button>Choose a date</button></li>
             <Link to={`/tour/${trip.dest}`}>
                 <li><button>Start virtual tour</button></li>

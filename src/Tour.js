@@ -33,20 +33,21 @@ const Tour = () => {
     return (
         <div>
             <h1>{tripID}</h1>
-            <ul>
+            <ul className='goBackButton'>
                 <Link to={`/`}>
                     <li><button>Go back</button></li>
                 </Link>
             </ul>
-            <ul>
-
-                {resArray.slice(5, 10).map((trip) => {
-                    //console.log(trip)
-                    return (
-                        <li><img src={trip.links[0].href} /></li>
-                    )
-                })}
-            </ul>
+            <div className="wrapper">
+                <ul>
+                    {resArray.slice(0, 10).map((trip) => {
+                        //console.log(trip)
+                        return (
+                            <li className='tourImage' key={trip.links[0].href}><img src={trip.links[0].href} /></li>
+                            )
+                        })}
+                </ul>
+            </div>
         </div>
     )
 }
