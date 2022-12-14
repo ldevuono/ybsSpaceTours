@@ -11,7 +11,7 @@ const Tour = () => {
 
     useEffect(() => {
 
-        const responseArray = [];
+        // const responseArray = [];
 
         axios({
             url: "https://images-api.nasa.gov/search",
@@ -21,13 +21,12 @@ const Tour = () => {
                 q: tripID
             }
         }).then((response) => {
-            console.log(response.data.collection.items[0].links[0].href);
+            // console.log(response.data.collection.items[0].links[0].href);
             setResArray(response.data.collection.items)
             // console.log(resArray)
         });
 
     }, []);
-
 
 
     return (

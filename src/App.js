@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Route, Routes, Link } from 'react-router-dom';
 import TripContainer from './TripContainer';
-import TripCounter from './TripCounter';
+// import TripCounter from './TripCounter';
 import Tour from './Tour';
 import './App.scss';
 import logo from './assets/ybs-logo.svg';
@@ -11,6 +11,18 @@ import logo from './assets/ybs-logo.svg';
 
 function App() {
 
+  const [tripCounter, setTripCounter] = useState(3)
+  const [buttonFunction, setbuttonFunction] = useState('works')
+
+  const handleClick = () => {
+    if (tripCounter > 0 ){
+      setTripCounter(tripCounter - 1)
+    } 
+    if (tripCounter === 1) {
+      setbuttonFunction('doesntWork')
+    }
+
+  }
 
   return (
     <div className="App">
@@ -22,7 +34,8 @@ function App() {
             <img src={logo} alt="" />
           </li>
           <li className='tripCounter'>
-            <TripCounter />
+            {/* <TripCounter /> */}
+            <p>Tours Left <span>{tripCounter}</span></p>
           </li>
         </ul>
       </header>
@@ -30,7 +43,12 @@ function App() {
       {/* desc */}
 
       <Routes>
-        <Route path="/" element={<TripContainer />} />
+        <Route path="/" element={
+            <TripContainer 
+                handleClick={handleClick} 
+                buttonClass={buttonFunction} 
+            />} 
+        />
         <Route path="/tour/:tripID" element={<Tour />} />
       </Routes>
     </div>

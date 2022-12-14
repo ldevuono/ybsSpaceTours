@@ -60,6 +60,16 @@ button {
 
   &:hover, &:focus, &:focus-within {
     border-color: variables.$primaryColour;
+    cursor: pointer;
     // color: variables.$primaryColour;
+  }
+}
+
+button.doesntWork {
+  opacity: 0.4;
+
+  &:hover, &:focus, &:focus-within {
+    border-color: variables.$secondaryColour;
+    cursor:default;
   }
 }

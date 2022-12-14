@@ -1,4 +1,4 @@
-// import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import TripBox from './TripBox';
 import WelcomeMessage from './WelcomeMessage';
 // import { Link } from 'react-router-dom';
@@ -6,7 +6,9 @@ import WelcomeMessage from './WelcomeMessage';
 import './App.scss';
 
 
-const TripContainer = () => {
+const TripContainer = (props) => {
+
+    const [buttonClass, setButtonClass] = useState(props.buttonClass)
 
     const tripArray = [
         {
@@ -57,7 +59,9 @@ const TripContainer = () => {
                         tripArray.map((trip) => {
                             return (
                                 <TripBox 
-                                tripInfo = {trip}                            
+                                tripInfo = {trip}  
+                                handleClick= { props.handleClick }
+                                buttonClass= { props.buttonClass }
                                 />
                                 )
                             })

@@ -4,9 +4,9 @@ import axios from 'axios';
 import './App.scss';
 
 const TripBox = (props) => {
-  console.log(props.tripInfo)
 
   const [trip, setTrip] = useState({})
+  const [tourClass, setTourClass] = useState(props.buttonClass)
 
   useEffect(() => {
 
@@ -18,7 +18,7 @@ const TripBox = (props) => {
 
           }).then((response) => {
               
-              console.log(response.data.collection.items[1].href);
+              // console.log(response.data.collection.items[1].href);
               
               setTrip({
                   dest: props.tripInfo.destName,
@@ -28,7 +28,6 @@ const TripBox = (props) => {
           });
 
   }, []);
-
 
 
 
@@ -42,7 +41,11 @@ const TripBox = (props) => {
         <ul className='buttonContainer'>
             <li><button>Choose a date</button></li>
             <Link to={`/tour/${trip.dest}`}>
-                <li><button>Start virtual tour</button></li>
+                <li>
+                  <button className={tourClass}
+                  onClick={props.handleClick}
+                  >Start virtual tour</button>
+                </li>
                 {/* <Tour /> */}
             </Link>
         </ul>
