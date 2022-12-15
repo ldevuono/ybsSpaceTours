@@ -2,11 +2,13 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import './App.scss';
+import Dates from './Dates.js'
 
 const TripBox = (props) => {
 
   const [trip, setTrip] = useState({})
   const [tourClass, setTourClass] = useState(props.buttonClass)
+  const [dateResp, setDateResp] = useState(props.dateResp)
 
   useEffect(() => {
 
@@ -29,7 +31,9 @@ const TripBox = (props) => {
 
   }, []);
 
-
+  useEffect( () => {
+    console.log(dateResp)
+  }, [])
 
   return (
 
@@ -40,6 +44,7 @@ const TripBox = (props) => {
         </div>
         <ul className='buttonContainer'>
             <li><button>Choose a date</button></li>
+            
             <Link to={`/tour/${trip.dest}`}>
                 <li>
                   <button className={tourClass}
@@ -49,7 +54,7 @@ const TripBox = (props) => {
                 {/* <Tour /> */}
             </Link>
         </ul>
-
+        <Dates dateResp= {props.dateResp}/>
     </li>
   )
 }

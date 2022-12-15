@@ -1,14 +1,16 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import TripBox from './TripBox';
 import WelcomeMessage from './WelcomeMessage';
 // import { Link } from 'react-router-dom';
-// import axios from 'axios';
+import axios from 'axios';
 import './App.scss';
+
 
 
 const TripContainer = (props) => {
 
     const [buttonClass, setButtonClass] = useState(props.buttonClass)
+    const [dateResp, setDateResp] = useState({})
 
     const tripArray = [
         {
@@ -49,6 +51,27 @@ const TripContainer = (props) => {
         },
     ]
 
+    useEffect(() => {
+
+		// const responseArray = [];
+		const todayDate = new Date();
+		console.log(todayDate)
+		axios({
+		  url: "https://api.nasa.gov/neo/rest/v1/feed?",
+		  method: "GET",
+		  dataResponse: "json",
+		  params: {
+			api_key: "0vfR0cK5U5L4Afnbrb20dF1VAFDSQIm1KDZnbJ5g",
+			start_date: `${todayDate.getFullYear()}-${todayDate.getMonth() + 1 }-${todayDate.getDay()}`
+		  }
+		}).then((response) => {
+		  // console.log(response.data.collection.items[0].links[0].href);
+		  setDateResp(response.data.near_earth_objects)
+		});
+	
+	  }, []);
+
+
 
     return (
         <>
@@ -62,6 +85,7 @@ const TripContainer = (props) => {
                                 tripInfo = {trip}  
                                 handleClick= { props.handleClick }
                                 buttonClass= { props.buttonClass }
+                                dateResp= {dateResp}
                                 />
                                 )
                             })
