@@ -32,7 +32,7 @@ const TripBox = (props) => {
   }, []);
 
   useEffect( () => {
-    console.log(dateResp)
+    //console.log(dateResp)
   }, [])
 
   return (

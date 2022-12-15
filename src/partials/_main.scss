@@ -48,10 +48,7 @@ header {
         // border: 10px solid variables.$tertiaryColour;
         padding: 30px;
         
-        &:hover, &:focus, &:focus-within {
-            border: 10px solid variables.$primaryColour;
-            margin: 0 auto;
-        }
+
 
         .imgContainer {
             max-width: 300px;

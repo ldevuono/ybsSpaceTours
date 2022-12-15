@@ -55,7 +55,7 @@ const TripContainer = (props) => {
 
 		// const responseArray = [];
 		const todayDate = new Date();
-		console.log(todayDate)
+		//console.log(todayDate)
 		axios({
 		  url: "https://api.nasa.gov/neo/rest/v1/feed?",
 		  method: "GET",
@@ -65,13 +65,27 @@ const TripContainer = (props) => {
 			start_date: `${todayDate.getFullYear()}-${todayDate.getMonth() + 1 }-${todayDate.getDay()}`
 		  }
 		}).then((response) => {
+            
+            const hazardousObjects = response.data.near_earth_objects;
+            for(const object in hazardousObjects){
+                // object.filter( (dateObject) => {
+                //console.log(hazardousObjects[object])
+                //     })
+                hazardousObjects[object].forEach((d) => {
+                    console.log(d.estimated_diameter.feet.estimated_diameter_max)
+                })
+            }
 		  // console.log(response.data.collection.items[0].links[0].href);
-		  setDateResp(response.data.near_earth_objects)
+          setDateResp(response.data.near_earth_objects)
 		});
 	
 	  }, []);
 
+      useEffect(() => {
 
+       //console.log(dateResp["2022-12-06"][0].absolute_magnitude_h)
+
+      }, [dateResp]);
 
     return (
         <>
