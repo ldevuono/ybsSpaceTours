@@ -4,6 +4,8 @@ import { Route, Routes, Link } from 'react-router-dom';
 import TripContainer from './TripContainer';
 // import TripCounter from './TripCounter';
 import Tour from './Tour';
+import Dates from './Dates';
+
 import './App.scss';
 import logo from './assets/ybs-logo.svg';
 
@@ -15,9 +17,9 @@ function App() {
   const [buttonFunction, setbuttonFunction] = useState('works')
 
   const handleClick = () => {
-    if (tripCounter > 0 ){
+    if (tripCounter > 0) {
       setTripCounter(tripCounter - 1)
-    } 
+    }
     if (tripCounter === 1) {
       setbuttonFunction('doesntWork')
     }
@@ -38,7 +40,7 @@ function App() {
           </li>
           <li className='tripCounter'>
             {/* <TripCounter /> */}
-            <p>Tours Left <span>{tripCounter}</span></p>
+            <p>Virtual Tours Left <span>{tripCounter}</span></p>
           </li>
         </ul>
       </header>
@@ -47,12 +49,13 @@ function App() {
 
       <Routes>
         <Route path="/" element={
-            <TripContainer 
-                handleClick={handleClick} 
-                buttonClass={buttonFunction} 
-            />} 
+          <TripContainer
+            handleClick={handleClick}
+            buttonClass={buttonFunction}
+          />}
         />
         <Route path="/tour/:tripID" element={<Tour />} />
+        <Route path="/dates/:tripID" element={<Dates />} />
       </Routes>
     </div>
   );

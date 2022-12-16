@@ -11,6 +11,7 @@ const TripContainer = (props) => {
 
     const [buttonClass, setButtonClass] = useState(props.buttonClass)
     const [dateResp, setDateResp] = useState({})
+    const [travelDays, setTravelDays] = useState([])
 
     const tripArray = [
         {
@@ -18,31 +19,31 @@ const TripContainer = (props) => {
             imgCode: "PIA08653"
         },
         {
-            destName: "Crab Nebula", 
+            destName: "Crab Nebula",
             imgCode: "PIA03606"
         },
         {
-            destName: "Milky way", 
+            destName: "Milky way",
             imgCode: "PIA12348"
         },
         {
-            destName: "mercury", 
+            destName: "mercury",
             imgCode: "PIA11766"
         },
         {
-            destName: "venus", 
+            destName: "venus",
             imgCode: "PIA00104"
         },
         {
-            destName: "uranus", 
+            destName: "uranus",
             imgCode: "PIA18182"
         },
         {
-            destName: "pluto", 
+            destName: "pluto",
             imgCode: "PIA09113"
         },
         {
-            destName: "saturn", 
+            destName: "saturn",
             imgCode: "PIA01383"
         },
         {
@@ -53,57 +54,65 @@ const TripContainer = (props) => {
 
     useEffect(() => {
 
-		// const responseArray = [];
-		const todayDate = new Date();
-		//console.log(todayDate)
-		axios({
-		  url: "https://api.nasa.gov/neo/rest/v1/feed?",
-		  method: "GET",
-		  dataResponse: "json",
-		  params: {
-			api_key: "0vfR0cK5U5L4Afnbrb20dF1VAFDSQIm1KDZnbJ5g",
-			start_date: `${todayDate.getFullYear()}-${todayDate.getMonth() + 1 }-${todayDate.getDay()}`
-		  }
-		}).then((response) => {
-            
+        // const responseArray = [];
+        const todayDate = new Date();
+        //console.log(todayDate)
+        axios({
+            url: "https://api.nasa.gov/neo/rest/v1/feed?",
+            method: "GET",
+            dataResponse: "json",
+            params: {
+                api_key: "0vfR0cK5U5L4Afnbrb20dF1VAFDSQIm1KDZnbJ5g",
+                start_date: `${todayDate.getFullYear()}-${todayDate.getMonth() + 1}-${todayDate.getDay()}`
+            }
+        }).then((response) => {
+
             const hazardousObjects = response.data.near_earth_objects;
-            for(const object in hazardousObjects){
+            let tempArray = []
+            for (const object in hazardousObjects) {
                 // object.filter( (dateObject) => {
                 //console.log(hazardousObjects[object])
                 //     })
                 hazardousObjects[object].forEach((d) => {
-                    console.log(d.estimated_diameter.feet.estimated_diameter_max)
+                    // console.log(d.estimated_diameter.kilometers.estimated_diameter_max)
+                    // console.log(d);
+                    if (d.estimated_diameter.kilometers.estimated_diameter_max >= 1.5) {
+                        // setTravelDays([...travelDays, object])
+                        tempArray.push(object);
+                    }
                 })
             }
-		  // console.log(response.data.collection.items[0].links[0].href);
-          setDateResp(response.data.near_earth_objects)
-		});
-	
-	  }, []);
+            tempArray = [... new Set(tempArray)];
+            // console.log(tempArray);
+            // console.log(response.data.collection.items[0].links[0].href);
+            setDateResp(tempArray)
+        });
 
-      useEffect(() => {
+    }, []);
 
-       //console.log(dateResp["2022-12-06"][0].absolute_magnitude_h)
+    useEffect(() => {
+        console.log(dateResp)
+        //console.log(dateResp["2022-12-06"][0].absolute_magnitude_h)
 
-      }, [dateResp]);
+    }, [dateResp]);
 
     return (
         <>
-        <WelcomeMessage />
+            <WelcomeMessage />
             <div className='wrapper'>
                 <ul className="tripContainer">
                     {
                         tripArray.map((trip) => {
                             return (
-                                <TripBox 
-                                tripInfo = {trip}  
-                                handleClick= { props.handleClick }
-                                buttonClass= { props.buttonClass }
-                                dateResp= {dateResp}
+                                <TripBox
+                                    tripInfo={trip}
+                                    handleClick={props.handleClick}
+                                    buttonClass={props.buttonClass}
+                                    dateResp={dateResp}
                                 />
-                                )
-                            })
-                        }
+                            )
+                        })
+                    }
                 </ul>
             </div>
         </>
