@@ -48,6 +48,7 @@ function Dates(props) {
 
 		const todayDate = new Date();
 		setDateList(getDates(todayDate, (todayDate).addDays(30)));
+
 		console.log(dateList);
 
 		// const responseArray = [];
@@ -56,11 +57,11 @@ function Dates(props) {
 			method: "GET",
 			dataResponse: "json",
 			params: {
-				api_key: "0vfR0cK5U5L4Afnbrb20dF1VAFDSQIm1KDZnbJ5g",
+				// api_key: "0vfR0cK5U5L4Afnbrb20dF1VAFDSQIm1KDZnbJ5g",
+				api_key: "JDRuKCmCHys7mfyiaqaUomCeZqsgjnv8iQyTjl8l",
 				start_date: `${todayDate.getFullYear()}-${todayDate.getMonth() + 1}-${todayDate.getDay()}`
 			}
 		}).then((response) => {
-
 			const hazardousObjects = response.data.near_earth_objects;
 			let tempArray = []
 			for (const object in hazardousObjects) {
@@ -78,9 +79,26 @@ function Dates(props) {
 			}
 			tempArray = [... new Set(tempArray)];
 
+			let allDatesObject = []
+			dateList.forEach((date) => {
+				const thisDate = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDay()}`
+				tempArray.forEach((d) => {
+					if (d === thisDate) {
+						allDatesObject.push({
+							date: thisDate,
+							isItSafe: false
+						})
+					} else {
+						allDatesObject.push({
+							date: thisDate,
+							isItSafe: true
+						})
+					}
+				})
+			})
 			// console.log(tempArray);
 			// console.log(response.data.collection.items[0].links[0].href);
-			setDateResp(tempArray)
+			setDateResp(allDatesObject);
 		});
 
 	}, []);
@@ -99,7 +117,8 @@ function Dates(props) {
 					<li><button>Go back</button></li>
 				</Link>
 			</ul>
-			<form>
+			<p>instructions tk</p>
+			<form className="wrapper">
 				<label htmlFor="name" className="sr-only">Name</label>
 				<input type="text" name="name" id="name" placeholder="Name" />
 
@@ -118,8 +137,7 @@ function Dates(props) {
 					{console.log(dateResp)}
 					{dateResp.map((date) => {
 						return (
-							<option value={date}>{date}</option>
-
+							<option className={date.isItSafe ? "safeDate" : "unsafeDate"} value={date.date}>{date.date}</option>
 						)
 					})}
 					{/* <option value="">Pick one:</option> */}

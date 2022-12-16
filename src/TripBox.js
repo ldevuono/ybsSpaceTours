@@ -14,8 +14,8 @@ const TripBox = (props) => {
   useEffect(() => {
 
     axios({
-
-      url: `https://proxy-ugwolsldnq-uc.a.run.app/https://images-api.nasa.gov/asset/${props.tripInfo.imgCode}`,
+      // https://proxy-ugwolsldnq-uc.a.run.app/
+      url: `https://images-api.nasa.gov/asset/${props.tripInfo.imgCode}`,
       method: "GET",
       dataResponse: "json"
 
