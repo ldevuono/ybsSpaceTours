@@ -129,8 +129,8 @@ function Dates(props) {
 				</Link>
 			</ul>
 			<p>Please fill out the form and select a date from the list below. We will contact you with more details.</p>
-			<p>All dates have been cleared of any dangerous space weather events by NASA.</p>
-			<p>Unsafe travel dates are greyed out.</p>
+			<p>All available dates have been cleared of any dangerous space weather events by NASA.</p>
+			<p>Non-selectable dates are deemed unsafe for travel.</p>
 			<form className="wrapper" onSubmit={submitHandler}>
 				<label htmlFor="name" className="sr-only">Name</label>
 				<input type="text" name="name" id="name" placeholder="Name" />
@@ -138,11 +138,11 @@ function Dates(props) {
 				<label htmlFor="email" className="sr-only">Email Address</label>
 				<input type="email" name="email" id="email" placeholder="Email Address" />
 				<div className="getDates">
-					<a href="#" className="availDates" onClick={() => setDates(!dates)}>See available dates</a>
+					<a href="#" onClick={() => setDates(!dates)} aria-label="Click here to see list of available dates">See available dates</a>
 				</div>
-				<label htmlFor="dates">Choose a date</label>
+				<label htmlFor="dates" className="sr-only">Choose a date</label>
 				<select
-					
+					className={dates ? "" : "selectHide" }
 					id="dates"
 					name="dates"
 					// onChange={ }
@@ -151,7 +151,7 @@ function Dates(props) {
 					// required={true}
 				>
 					{console.log(dateResp)}
-					<option value="" disabled>Choose a date</option>
+					<option  value="" disabled>Choose a date</option>
 					{dateResp.map((date) => {
 						return (
 							<option disabled={date.isItSafe ? false : true} value={date.date}>{date.date}</option>

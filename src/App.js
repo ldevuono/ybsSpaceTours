@@ -23,8 +23,10 @@ function App() {
     if (tripCounter === 1) {
       setbuttonFunction('doesntWork')
       
-    } 
-    alert("Come back tomorrow!")
+    } else if(tripCounter === 0){
+      alert("Come back tomorrow!")
+    }
+  
   }
 
 
