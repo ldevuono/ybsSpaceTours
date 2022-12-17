@@ -1,13 +1,12 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Route, Routes, Link, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-function Dates(props) {
+function Dates() {
 	const [dateResp, setDateResp] = useState([])
 	const [dateList, setDateList] = useState([]);
 	const [dates, setDates] = useState(false);
 
-	const { tripID } = useParams();
 
 	// Date.prototype.addDays = function (days) {
 	// 	var date = new Date(this.valueOf());
@@ -30,7 +29,7 @@ function Dates(props) {
 	// console.log(dateList);
 
 	useEffect(() => {
-
+		// eslint-disable-next-line
 		Date.prototype.addDays = function (days) {
 			var date = new Date(this.valueOf());
 			date.setDate(date.getDate() + days);
@@ -38,6 +37,7 @@ function Dates(props) {
 		}
 
 		const getDates = (startDate, stopDate) => {
+				// eslint-disable-next-line
 			let dateArray = new Array();
 			let currentDate = startDate;
 			while (currentDate <= stopDate) {
@@ -71,6 +71,7 @@ function Dates(props) {
 				// object.filter( (dateObject) => {
 				//console.log(hazardousObjects[object])
 				//     })
+					// eslint-disable-next-line
 				hazardousObjects[object].forEach((d) => {
 					// console.log(d.estimated_diameter.kilometers.estimated_diameter_max)
 					// console.log(d);
@@ -80,7 +81,7 @@ function Dates(props) {
 					}
 				})
 			}
-			tempArray = [... new Set(tempArray)];
+			tempArray = [...new Set(tempArray)];
 
 
 			let allDatesObject = []
@@ -100,13 +101,13 @@ function Dates(props) {
 					}
 				})
 			})
-			allDatesObject = [... new Set(allDatesObject)];
+			allDatesObject = [...new Set(allDatesObject)];
 			// console.log(tempArray);
 			// console.log(response.data.collection.items[0].links[0].href);
 			setDateResp(allDatesObject);
 			console.log(dateResp);
 		});
-
+	// eslint-disable-next-line
 	}, [dates]);
 
 
@@ -138,7 +139,7 @@ function Dates(props) {
 				<label htmlFor="email" className="sr-only">Email Address</label>
 				<input type="email" name="email" id="email" placeholder="Email Address" />
 				<div className="getDates">
-					<a href="#" onClick={() => setDates(!dates)} aria-label="Click here to see list of available dates">See available dates</a>
+					<button onClick={() => setDates(!dates)} aria-label="Click here to see list of available dates">See available dates</button>
 				</div>
 				<label htmlFor="dates" className="sr-only">Choose a date</label>
 				<select
