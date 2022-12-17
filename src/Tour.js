@@ -25,7 +25,7 @@ const Tour = () => {
             setResArray(response.data.collection.items)
             // console.log(resArray)
         });
-
+	// eslint-disable-next-line
     }, []);
 
 
@@ -42,7 +42,7 @@ const Tour = () => {
                     {resArray.slice(0, 10).map((trip) => {
                         //console.log(trip)
                         return (
-                            <li className='tourImage' key={trip.links[0].href}><img src={trip.links[0].href} /></li>
+                            <li className='tourImage' key={trip.links[0].href}><img src={trip.links[0].href} alt={`the beautiful ${trip.dest}`}/></li>
                             )
                         })}
                 </ul>

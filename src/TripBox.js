@@ -2,12 +2,13 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import './App.scss';
-import Dates from './Dates.js'
+// import Dates from './Dates.js'
 
 const TripBox = (props) => {
   // console.log(props.dateResp)
 
   const [trip, setTrip] = useState({})
+  	// eslint-disable-next-line
   const [tourClass, setTourClass] = useState(props.buttonClass)
   // const [dateResp, setDateResp] = useState(props.dateResp)
 
@@ -29,7 +30,7 @@ const TripBox = (props) => {
         imgLink: response.data.collection.items[1].href
       })
     });
-
+	// eslint-disable-next-line
   }, []);
 
   // useEffect(() => {
@@ -41,7 +42,7 @@ const TripBox = (props) => {
     <li className="imgButtons" key={trip.dest}>
       <h3>{trip.dest}</h3>
       <div className="imgContainer">
-        <img src={trip.imgLink} alt={`a beautiful image of ${trip.dest}`} />
+        <img src={trip.imgLink} alt={`the beautiful ${trip.dest}`} />
       </div>
       <ul className='buttonContainer'>
         {props.tripCounter > 0 ?  <Link to={`/tour/${trip.dest}`}>

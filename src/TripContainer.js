@@ -9,9 +9,9 @@ import './App.scss';
 
 const TripContainer = (props) => {
 
-    const [buttonClass, setButtonClass] = useState(props.buttonClass)
+    // const [buttonClass, setButtonClass] = useState(props.buttonClass)
     const [dateResp, setDateResp] = useState({})
-    const [travelDays, setTravelDays] = useState([])
+    // const [travelDays, setTravelDays] = useState([])
 
     const tripArray = [
         {
@@ -73,6 +73,7 @@ const TripContainer = (props) => {
                 // object.filter( (dateObject) => {
                 //console.log(hazardousObjects[object])
                 //     })
+                // eslint-disable-next-line
                 hazardousObjects[object].forEach((d) => {
                     // console.log(d.estimated_diameter.kilometers.estimated_diameter_max)
                     // console.log(d);
@@ -82,7 +83,7 @@ const TripContainer = (props) => {
                     }
                 })
             }
-            tempArray = [... new Set(tempArray)];
+            tempArray = [...new Set(tempArray)];
             // console.log(tempArray);
             // console.log(response.data.collection.items[0].links[0].href);
             setDateResp(tempArray)

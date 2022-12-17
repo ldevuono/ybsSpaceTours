@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react';
-import axios from 'axios';
-import { Route, Routes, Link } from 'react-router-dom';
+import {  useState } from 'react';
+// import axios from 'axios';
+import { Route, Routes} from 'react-router-dom';
 import TripContainer from './TripContainer';
 // import TripCounter from './TripCounter';
 import Tour from './Tour';
