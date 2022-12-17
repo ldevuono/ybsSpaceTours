@@ -109,6 +109,7 @@ const TripContainer = (props) => {
                                     handleClick={props.handleClick}
                                     buttonClass={props.buttonClass}
                                     dateResp={dateResp}
+                                    tripCounter={props.tripCounter}
                                 />
                             )
                         })

@@ -22,8 +22,9 @@ function App() {
     }
     if (tripCounter === 1) {
       setbuttonFunction('doesntWork')
-    }
-
+      
+    } 
+    alert("Come back tomorrow!")
   }
 
 
@@ -52,6 +53,7 @@ function App() {
           <TripContainer
             handleClick={handleClick}
             buttonClass={buttonFunction}
+            tripCounter={tripCounter}
           />}
         />
         <Route path="/tour/:tripID" element={<Tour />} />

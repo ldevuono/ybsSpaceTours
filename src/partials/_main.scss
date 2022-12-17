@@ -66,3 +66,16 @@ header {
         }
     }
 }
+
+.instructions, .welcomeMessage{
+    width: 80%;
+    margin: 0 auto;
+}
+
+.instructions{
+    padding: 30px;
+}
+
+.welcomeMessage{
+    padding: 30px 30px 0 30px;
+}
