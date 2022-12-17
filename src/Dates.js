@@ -5,6 +5,7 @@ import { Route, Routes, Link, useParams } from 'react-router-dom';
 function Dates(props) {
 	const [dateResp, setDateResp] = useState([])
 	const [dateList, setDateList] = useState([]);
+	const [dates, setDates] = useState(false);
 
 	const { tripID } = useParams();
 
@@ -37,8 +38,8 @@ function Dates(props) {
 		}
 
 		const getDates = (startDate, stopDate) => {
-			var dateArray = new Array();
-			var currentDate = startDate;
+			let dateArray = new Array();
+			let currentDate = startDate;
 			while (currentDate <= stopDate) {
 				dateArray.push(new Date(currentDate));
 				currentDate = currentDate.addDays(1);
@@ -48,8 +49,9 @@ function Dates(props) {
 
 		const todayDate = new Date();
 		setDateList(getDates(todayDate, (todayDate).addDays(30)));
+		
 
-		console.log(dateList);
+		// console.log(dateList);
 
 		// const responseArray = [];
 		axios({
@@ -57,11 +59,12 @@ function Dates(props) {
 			method: "GET",
 			dataResponse: "json",
 			params: {
-				// api_key: "0vfR0cK5U5L4Afnbrb20dF1VAFDSQIm1KDZnbJ5g",
-				api_key: "JDRuKCmCHys7mfyiaqaUomCeZqsgjnv8iQyTjl8l",
-				start_date: `${todayDate.getFullYear()}-${todayDate.getMonth() + 1}-${todayDate.getDay()}`
+				api_key: "0vfR0cK5U5L4Afnbrb20dF1VAFDSQIm1KDZnbJ5g",
+				// api_key: "JDRuKCmCHys7mfyiaqaUomCeZqsgjnv8iQyTjl8l",
+				start_date: `${todayDate.getFullYear()}-${todayDate.getMonth() + 1}-${todayDate.getDate()}`,
 			}
 		}).then((response) => {
+			console.log(response);
 			const hazardousObjects = response.data.near_earth_objects;
 			let tempArray = []
 			for (const object in hazardousObjects) {
@@ -79,9 +82,10 @@ function Dates(props) {
 			}
 			tempArray = [... new Set(tempArray)];
 
+
 			let allDatesObject = []
 			dateList.forEach((date) => {
-				const thisDate = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDay()}`
+				const thisDate = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
 				tempArray.forEach((d) => {
 					if (d === thisDate) {
 						allDatesObject.push({
@@ -96,12 +100,15 @@ function Dates(props) {
 					}
 				})
 			})
+			allDatesObject = [... new Set(allDatesObject)];
 			// console.log(tempArray);
 			// console.log(response.data.collection.items[0].links[0].href);
 			setDateResp(allDatesObject);
+			console.log(dateResp);
 		});
 
-	}, []);
+	}, [dates]);
+
 
 
 	useEffect(() => {
@@ -109,6 +116,10 @@ function Dates(props) {
 		//console.log(dateResp["2022-12-06"][0].absolute_magnitude_h)
 
 	}, [dateResp]);
+
+	const submitHandler = (e) =>{
+		e.preventDefault();
+	}
 
 	return (
 		<div>
@@ -118,32 +129,37 @@ function Dates(props) {
 				</Link>
 			</ul>
 			<p>instructions tk</p>
-			<form className="wrapper">
+			<form className="wrapper" onSubmit={submitHandler}>
 				<label htmlFor="name" className="sr-only">Name</label>
 				<input type="text" name="name" id="name" placeholder="Name" />
 
 				<label htmlFor="email" className="sr-only">Email Address</label>
 				<input type="email" name="email" id="email" placeholder="Email Address" />
-
+				<a onClick={() => setDates(!dates)}>See available dates</a>
 				<label htmlFor="dates">Choose a date</label>
 				<select
+					
 					id="dates"
 					name="dates"
 					// onChange={ }
 					// value={ }
 					defaultValue={""}
-					required={true}
+					// required={true}
 				>
 					{console.log(dateResp)}
 					{dateResp.map((date) => {
 						return (
-							<option className={date.isItSafe ? "safeDate" : "unsafeDate"} value={date.date}>{date.date}</option>
+							<option  className={date.isItSafe ? "safeDate" : "unsafeDate"} value={date.date}>{date.date}</option>
 						)
 					})}
 					{/* <option value="">Pick one:</option> */}
 
 				</select>
+				<button>Submit</button>
+					
 			</form>
+			
+	
 
 
 
