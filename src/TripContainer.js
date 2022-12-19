@@ -62,16 +62,17 @@ const TripContainer = (props) => {
                 start_date: dateFormatted
             }
         }).then((response) => {
-
             const hazardousObjects = response.data.near_earth_objects;
-            let tempArray = []
-            for (const object in hazardousObjects) {
-                // eslint-disable-next-line
-                hazardousObjects[object].forEach((d) => {
-                    if (d.estimated_diameter.kilometers.estimated_diameter_max >= 1.5) {
-                        tempArray.push(object);
-                    }
-                })
+
+            let tempArray = () => {
+                for (const object in hazardousObjects) {
+                    let loopArray = []
+                    hazardousObjects[object].forEach((d) => {
+                        if (d.estimated_diameter.kilometers.estimated_diameter_max >= 1.5) {
+                            loopArray.push(object);
+                        }
+                    })
+                }
             }
             tempArray = [...new Set(tempArray)];
 

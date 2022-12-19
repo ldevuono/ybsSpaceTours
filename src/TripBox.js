@@ -24,9 +24,7 @@ const TripBox = (props) => {
         imgLink: response.data.collection.items[1].href
       })
     });
-    // eslint-disable-next-line
-  }, []);
-
+  }, [props.tripInfo.destName, props.tripInfo.imgCode]);
 
 
   return (

@@ -12,7 +12,6 @@ function Dates(props) {
 	// const [userEmail, setEmail] = useState("");
 	const totalDates = 6;
 
-
 	useEffect(() => {
 		// eslint-disable-next-line
 		Date.prototype.addDays = function (days) {
@@ -36,7 +35,6 @@ function Dates(props) {
 		setDateList(getDates(todayDate, (todayDate).addDays(totalDates)));
 
 
-
 		axios({
 			url: "https://api.nasa.gov/neo/rest/v1/feed?",
 			method: "GET",
@@ -51,7 +49,7 @@ function Dates(props) {
 			const hazardousObjects = response.data.near_earth_objects;
 			let tempArray = []
 			for (const object in hazardousObjects) {
-
+				// eslint-disable-next-line
 				hazardousObjects[object].forEach((d) => {
 					if (d.estimated_diameter.kilometers.estimated_diameter_max >= .5) {
 						tempArray.push(object);
@@ -88,8 +86,6 @@ function Dates(props) {
 		});
 		// eslint-disable-next-line
 	}, [dates]);
-
-
 
 
 	const submitHandler = (e) => {

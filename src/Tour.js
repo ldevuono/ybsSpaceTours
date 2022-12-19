@@ -21,8 +21,7 @@ const Tour = () => {
         }).then((response) => {
             setResArray(response.data.collection.items)
         });
-        // eslint-disable-next-line
-    }, []);
+    }, [tripID]);
 
 
     return (
