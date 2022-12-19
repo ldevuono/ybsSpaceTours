@@ -11,6 +11,7 @@ header {
         img {
             width: 400px;
         }
+
         .tripCounter {
             position: absolute;
             top: 30px;
@@ -47,7 +48,7 @@ header {
         align-items: center;
         // border: 10px solid variables.$tertiaryColour;
         padding: 30px;
-        
+
 
 
         .imgContainer {
@@ -60,6 +61,7 @@ header {
                 height: 300px;
             }
         }
+
         .buttonContainer {
             display: flex;
             flex-direction: column;
@@ -67,22 +69,25 @@ header {
     }
 }
 
-.instructions, .welcomeMessage{
+.instructions,
+.welcomeMessage,
+.extraInstructions {
     width: 80%;
     margin: 0 auto;
 }
 
-.instructions{
-    padding: 30px;
+.instructions,
+.extraInstructions {
+    padding: 15px 30px 0;
 }
 
-.welcomeMessage{
+.welcomeMessage {
     padding: 30px 30px 0 30px;
 }
 
 @media (max-width: 1075px) {
     .tripContainer {
-        
+
         .imgButtons {
             min-width: 350px;
             margin: 10px auto 60px;
@@ -95,23 +100,25 @@ header {
 
 @media (max-width: 950px) {
     header {
-        ul {    
+        ul {
             img {
                 width: 250px;
             }
         }
-        
+
         p {
             padding: 4px;
             font-size: 0.8rem;
-            
+
             span {
                 padding: 4px 6px;
             }
         }
     }
-    
-    .instructions, .welcomeMessage{
+
+    .instructions,
+    .welcomeMessage,
+    .extraInstructions {
         width: 100%;
         margin: 0 auto;
     }
@@ -121,21 +128,23 @@ header {
 
     .wrapper {
         max-width: 100%;
+
         // margin: 30px;
-        p, h1 {
+        p,
+        h1 {
             width: 95%;
         }
     }
 
     .tripContainer {
-        
+
         .imgButtons {
             min-width: 300px;
             margin: 10px auto 60px;
             padding: 15px;
         }
     }
-  }
+}
 
 @media (max-width: 700px) {
     .wrapper {
@@ -157,7 +166,7 @@ header {
     }
 
     .tripContainer {
-        
+
         .imgButtons {
             width: 100%;
             margin: 60px 0 0;
@@ -168,11 +177,12 @@ header {
                 background-color: black;
                 padding: 4px 8px;
                 margin-top: 30px;
-                h3{
+
+                h3 {
                     margin: 0 auto;
                 }
             }
-            
+
             .imgContainer {
                 position: absolute;
                 z-index: -1;
@@ -190,4 +200,4 @@ header {
             }
         }
     }
-  }
+}

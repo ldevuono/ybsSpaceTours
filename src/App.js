@@ -1,6 +1,6 @@
-import {  useState } from 'react';
+import { useState } from 'react';
 
-import { Route, Routes} from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import TripContainer from './TripContainer';
 
 import Tour from './Tour';
@@ -23,11 +23,11 @@ function App() {
     }
     if (tripCounter === 1) {
       setbuttonFunction('doesntWork')
-      
-    } else if(tripCounter === 0){
+
+    } else if (tripCounter === 0) {
       alert("Come back tomorrow!")
     }
-  
+
   }
 
 
@@ -43,7 +43,6 @@ function App() {
             <img src={logo} alt="" />
           </li>
           <li className='tripCounter'>
-            {/* <TripCounter /> */}
             <p>Virtual Tours Left <span>{tripCounter}</span></p>
           </li>
         </ul>
@@ -62,7 +61,7 @@ function App() {
         <Route path="/tour/:tripID" element={<Tour />} />
         <Route path="/dates/:tripID" element={<Dates />} />
       </Routes>
-      
+
       <Footer />
     </div>
   );

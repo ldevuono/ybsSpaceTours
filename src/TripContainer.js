@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import TripBox from './TripBox';
 import WelcomeMessage from './WelcomeMessage';
-// import { Link } from 'react-router-dom';
 import axios from 'axios';
 import './App.scss';
 
@@ -9,9 +8,7 @@ import './App.scss';
 
 const TripContainer = (props) => {
 
-    // const [buttonClass, setButtonClass] = useState(props.buttonClass)
     const [dateResp, setDateResp] = useState({})
-    // const [travelDays, setTravelDays] = useState([])
 
     const tripArray = [
         {
@@ -27,37 +24,35 @@ const TripContainer = (props) => {
             imgCode: "PIA12348"
         },
         {
-            destName: "mercury",
+            destName: "Mercury",
             imgCode: "PIA11766"
         },
         {
-            destName: "venus",
+            destName: "Venus",
             imgCode: "PIA00104"
         },
         {
-            destName: "uranus",
+            destName: "Uranus",
             imgCode: "PIA18182"
         },
         {
-            destName: "pluto",
+            destName: "Pluto",
             imgCode: "PIA09113"
         },
         {
-            destName: "saturn",
+            destName: "Saturn",
             imgCode: "PIA01383"
         },
         {
-            destName: "sun",
+            destName: "Sun",
             imgCode: "GSFC_20171208_Archive_e001434"
         },
     ]
 
     useEffect(() => {
 
-        // const responseArray = [];
         const todayDate = new Date();
         const dateFormatted = `${todayDate.getFullYear()}-${("0" + (todayDate.getMonth() + 1)).slice(-2)}-${("0" + todayDate.getDate()).slice(-2)}`
-        // console.log(dateFormatted)
         axios({
             url: "https://api.nasa.gov/neo/rest/v1/feed?",
             method: "GET",
@@ -71,32 +66,20 @@ const TripContainer = (props) => {
             const hazardousObjects = response.data.near_earth_objects;
             let tempArray = []
             for (const object in hazardousObjects) {
-                // object.filter( (dateObject) => {
-                //console.log(hazardousObjects[object])
-                //     })
                 // eslint-disable-next-line
                 hazardousObjects[object].forEach((d) => {
-                    // console.log(d.estimated_diameter.kilometers.estimated_diameter_max)
-                    // console.log(d);
                     if (d.estimated_diameter.kilometers.estimated_diameter_max >= 1.5) {
-                        // setTravelDays([...travelDays, object])
                         tempArray.push(object);
                     }
                 })
             }
             tempArray = [...new Set(tempArray)];
-            // console.log(tempArray);
-            // console.log(response.data.collection.items[0].links[0].href);
+
             setDateResp(tempArray)
         });
 
     }, []);
 
-    useEffect(() => {
-        console.log(dateResp)
-        //console.log(dateResp["2022-12-06"][0].absolute_magnitude_h)
-
-    }, [dateResp]);
 
     return (
         <>

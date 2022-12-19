@@ -11,8 +11,6 @@ const Tour = () => {
 
     useEffect(() => {
 
-        // const responseArray = [];
-
         axios({
             url: "https://images-api.nasa.gov/search",
             method: "GET",
@@ -21,11 +19,9 @@ const Tour = () => {
                 q: tripID
             }
         }).then((response) => {
-            // console.log(response.data.collection.items[0].links[0].href);
             setResArray(response.data.collection.items)
-            // console.log(resArray)
         });
-	// eslint-disable-next-line
+        // eslint-disable-next-line
     }, []);
 
 
@@ -40,11 +36,10 @@ const Tour = () => {
             <div className="wrapper">
                 <ul>
                     {resArray.slice(0, 10).map((trip) => {
-                        //console.log(trip)
                         return (
-                            <li className='tourImage' key={trip.links[0].href}><img src={trip.links[0].href} alt={`the beautiful ${trip.dest}`}/></li>
-                            )
-                        })}
+                            <li className='tourImage' key={trip.links[0].href}><img src={trip.links[0].href} alt={`the beautiful ${trip.dest}`} /></li>
+                        )
+                    })}
                 </ul>
             </div>
         </div>
