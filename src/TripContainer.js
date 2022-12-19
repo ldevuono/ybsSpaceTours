@@ -56,14 +56,15 @@ const TripContainer = (props) => {
 
         // const responseArray = [];
         const todayDate = new Date();
-        //console.log(todayDate)
+        const dateFormatted = `${todayDate.getFullYear()}-${("0" + (todayDate.getMonth() + 1)).slice(-2)}-${("0" + todayDate.getDate()).slice(-2)}`
+        // console.log(dateFormatted)
         axios({
             url: "https://api.nasa.gov/neo/rest/v1/feed?",
             method: "GET",
             dataResponse: "json",
             params: {
                 api_key: "0vfR0cK5U5L4Afnbrb20dF1VAFDSQIm1KDZnbJ5g",
-                start_date: `${todayDate.getFullYear()}-${todayDate.getMonth() + 1}-${todayDate.getDay()}`
+                start_date: dateFormatted
             }
         }).then((response) => {
 
@@ -106,10 +107,11 @@ const TripContainer = (props) => {
                         tripArray.map((trip) => {
                             return (
                                 <TripBox
+                                    key={trip.imgCode}
                                     tripInfo={trip}
                                     handleClick={props.handleClick}
                                     buttonClass={props.buttonClass}
-                                    dateResp={dateResp}
+                                    dateresp={dateResp}
                                     tripCounter={props.tripCounter}
                                 />
                             )

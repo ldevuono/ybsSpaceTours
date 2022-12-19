@@ -61,7 +61,7 @@ function Dates() {
 			params: {
 				api_key: "0vfR0cK5U5L4Afnbrb20dF1VAFDSQIm1KDZnbJ5g",
 				// api_key: "JDRuKCmCHys7mfyiaqaUomCeZqsgjnv8iQyTjl8l",
-				start_date: `${todayDate.getFullYear()}-${todayDate.getMonth() + 1}-${todayDate.getDate()}`,
+				start_date: `${todayDate.getFullYear()}-${("0" + (todayDate.getMonth() + 1)).slice(-2)}-${("0" + todayDate.getDate()).slice(-2)}`
 			}
 		}).then((response) => {
 			console.log(response);
@@ -151,11 +151,14 @@ function Dates() {
 					defaultValue={""}
 					// required={true}
 				>
-					{console.log(dateResp)}
+					{/* {console.log(dateResp)} */}
 					<option  value="" disabled>Choose a date</option>
 					{dateResp.map((date) => {
 						return (
-							<option disabled={date.isItSafe ? false : true} value={date.date}>{date.date}</option>
+							<option 
+							key={`dropdownDate${date.date}`}
+							disabled={date.isItSafe ? false : true} 
+							value={date.date}>{date.date}</option>
 						)
 					})}
 					{/* <option value="">Pick one:</option> */}

@@ -45,26 +45,30 @@ const TripBox = (props) => {
         <img src={trip.imgLink} alt={`the beautiful ${trip.dest}`} />
       </div>
       <ul className='buttonContainer'>
-        {props.tripCounter > 0 ?  <Link to={`/tour/${trip.dest}`}>
+        {
+        props.tripCounter > 0 ?  
+        <Link to={`/tour/${trip.dest}`}>
           <li>
             <button className={tourClass}
               onClick={props.handleClick}
             >Start virtual tour</button>
           </li>
           {/* <Tour /> */}
-        </Link> :
+        </Link> 
+        :
         <Link to={'/'}>
           <li>
             <button className={tourClass}
               onClick={props.handleClick}
             >Start virtual tour</button>
           </li>
-        </Link> }
+        </Link> 
+        }
 
        
         <Link to={`/dates/${trip.dest}`}>
           <li><button
-            onClick={props.dateResp}
+            dateresp={props.dateResp}
           >Reserve a date</button></li>
         </Link>
       </ul>
