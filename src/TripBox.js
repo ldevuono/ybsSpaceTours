@@ -40,7 +40,9 @@ const TripBox = (props) => {
   return (
 
     <li className="imgButtons" key={trip.dest}>
-      <h3>{trip.dest}</h3>
+      <div className="titleContainer">
+        <h3>{trip.dest}</h3>
+      </div>
       <div className="imgContainer">
         <img src={trip.imgLink} alt={`the beautiful ${trip.dest}`} />
       </div>

@@ -15,3 +15,18 @@ li.tourImage {
     width: 100%;
   }
 }
+
+@media (max-width: 850px) {
+  .goBackButton {
+    button {
+      min-width: 0;
+      // width: 120px;
+    }
+  }
+}
+
+@media (max-width: 700px) {
+  .goBackButton {
+    position: static;
+  }
+}

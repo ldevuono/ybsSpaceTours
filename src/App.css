@@ -327,6 +327,9 @@ header p span {
   .wrapper {
     max-width: 100%;
   }
+  .wrapper p, .wrapper h1 {
+    width: 95%;
+  }
   .tripContainer .imgButtons {
     min-width: 300px;
     margin: 10px auto 60px;
@@ -337,11 +340,28 @@ header p span {
   .wrapper {
     max-width: 100%;
   }
+  header ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  header ul .tripCounter {
+    position: static;
+    max-width: 250px;
+  }
   .tripContainer .imgButtons {
     width: 100%;
-    margin: 0;
+    margin: 60px 0 0;
     padding: 0;
     position: relative;
+  }
+  .tripContainer .imgButtons .titleContainer {
+    background-color: black;
+    padding: 4px 8px;
+    margin-top: 30px;
+  }
+  .tripContainer .imgButtons .titleContainer h3 {
+    margin: 0 auto;
   }
   .tripContainer .imgButtons .imgContainer {
     position: absolute;
@@ -351,6 +371,9 @@ header p span {
   }
   .tripContainer .imgButtons .imgContainer img {
     width: 100%;
+  }
+  .tripContainer .imgButtons .buttonContainer {
+    margin-top: 60px;
   }
 }
 .goBackButton {
@@ -366,6 +389,23 @@ li.tourImage {
 li.tourImage img {
   max-width: none;
   width: 100%;
+}
+
+@media (max-width: 850px) {
+  .goBackButton button {
+    min-width: 0;
+  }
+}
+@media (max-width: 700px) {
+  .goBackButton {
+    position: static;
+  }
+}
+.wrapper.datesWrapper p {
+  max-width: 500px;
+}
+.wrapper.datesWrapper p.extraMarginTop {
+  margin-top: 30px;
 }
 
 form {
@@ -414,6 +454,11 @@ form button {
   padding: 15px 30px;
 }
 
+@media (max-width: 950px) {
+  form input, form select {
+    width: 100%;
+  }
+}
 .App {
   text-align: center;
 }

@@ -1,13 +1,14 @@
 import {  useState } from 'react';
-// import axios from 'axios';
+
 import { Route, Routes} from 'react-router-dom';
 import TripContainer from './TripContainer';
-// import TripCounter from './TripCounter';
+
 import Tour from './Tour';
 import Dates from './Dates';
 
 import './App.scss';
 import logo from './assets/ybs-logo.svg';
+import Footer from './Footer';
 
 
 
@@ -61,6 +62,8 @@ function App() {
         <Route path="/tour/:tripID" element={<Tour />} />
         <Route path="/dates/:tripID" element={<Dates />} />
       </Routes>
+      
+      <Footer />
     </div>
   );
 }

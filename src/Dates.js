@@ -140,10 +140,11 @@ function Dates() {
 					<li><button>Go back</button></li>
 				</Link>
 			</ul>
-			<p>Please fill out the form and select a date from the list below. We will contact you with more details.</p>
-			<p>All available dates have been cleared of any dangerous space weather events by NASA.</p>
-			<p>Non-selectable dates are deemed unsafe for travel.</p>
-			<form className="wrapper" onSubmit={submitHandler}>
+			<div className="wrapper datesWrapper">
+				<p>Please fill out the form and select a date from the list below. We will contact you with more details.</p>
+				<p>All available dates have been cleared of any dangerous space weather events by NASA.</p>
+				<p className='extraMarginTop'>Non-selectable dates are deemed unsafe for travel.</p>
+			<form onSubmit={submitHandler}>
 				<label htmlFor="name" className="sr-only">Name</label>
 				<input type="text" name="name" id="name" placeholder="Name" />
 
@@ -161,7 +162,7 @@ function Dates() {
 					// value={ }
 					defaultValue={""}
 					// required={true}
-				>
+					>
 					{/* {console.log(dateResp)} */}
 					<option  value="" disabled>Choose a date</option>
 					{dateResp.map((date) => {
@@ -182,10 +183,8 @@ function Dates() {
 					
 			</form>
 			
-	
-
-
-
+		</div>
+		{/* end of tupac */}
 
 		</div>
 	)

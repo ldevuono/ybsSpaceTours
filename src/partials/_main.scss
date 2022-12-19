@@ -118,9 +118,13 @@ header {
 }
 
 @media (max-width: 800px) {
+
     .wrapper {
         max-width: 100%;
         // margin: 30px;
+        p, h1 {
+            width: 95%;
+        }
     }
 
     .tripContainer {
@@ -139,13 +143,35 @@ header {
         // margin: 30px;
     }
 
+    header {
+        ul {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            .tripCounter {
+                position: static;
+                max-width: 250px;
+            }
+        }
+    }
+
     .tripContainer {
         
         .imgButtons {
             width: 100%;
-            margin: 0;
+            margin: 60px 0 0;
             padding: 0;
             position: relative;
+
+            .titleContainer {
+                background-color: black;
+                padding: 4px 8px;
+                margin-top: 30px;
+                h3{
+                    margin: 0 auto;
+                }
+            }
             
             .imgContainer {
                 position: absolute;
@@ -157,6 +183,10 @@ header {
                     width: 100%;
                 }
 
+            }
+
+            .buttonContainer {
+                margin-top: 60px;
             }
         }
     }
