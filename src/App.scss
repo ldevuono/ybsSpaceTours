@@ -13,6 +13,7 @@
 body {
   color: variables.$tertiaryColour;
   font-size: 125%;
+  background-color: black;
 
   ul {
     list-style: none;
@@ -23,6 +24,10 @@ body {
   max-width: 1440px;
   width: 100%;
   margin: 60px auto 0;
+  p {
+    max-width: 700px;
+    margin: 0 auto;
+  }
 }
 
 img {
@@ -36,6 +41,7 @@ img {
   position: fixed;
   z-index: -1;
   margin: 0;
+  opacity: 0.3;
 }
 
 h1 {
@@ -78,5 +84,26 @@ button.doesntWork {
   &:focus-within {
     border-color: variables.$secondaryColour;
     cursor: default;
+  }
+}
+
+@media (max-width: 950px) { 
+  .wrapper {
+    max-width: 90%;
+    // width: 100%;
+    margin: 60px auto 0;
+    p {
+      max-width: 100%;
+      margin: 0 auto;
+    }
+  }
+}
+
+
+
+@media (max-width: 800px) {
+  .wrapper {
+      max-width: 100%;
+      // margin: 30px;
   }
 }
