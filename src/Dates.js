@@ -99,7 +99,7 @@ function Dates() {
 			dateList.forEach((date, i) => {
 				const thisDate = `${date.getFullYear()}-${("0" + (date.getMonth() + 1)).slice(-2)}-${("0" + date.getDate()).slice(-2)}`;
 
-					if (thisDate == tempArray[i]) {
+					if (thisDate === tempArray[i]) {
 						allDatesObject.push({
 							date: thisDate,
 							isItSafe: false
