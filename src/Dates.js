@@ -18,9 +18,10 @@ function Dates(props) {
 	const totalDates = 6;
 
 	useEffect(() => {
-		// eslint-disable-next-line
+		
 
 		//getting the current date
+		//eslint-disable-next-line
 		Date.prototype.addDays = function (days) {
 			let date = new Date(this.valueOf());
 			date.setDate(date.getDate() + days);
@@ -95,7 +96,6 @@ function Dates(props) {
 			setDateResp(allDatesObject);
 		});
 		// eslint-disable-next-line
-
 	}, [dates]);
 
 	//form subbmission actions
