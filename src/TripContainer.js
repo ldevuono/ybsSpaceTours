@@ -1,3 +1,5 @@
+//the purpose of this component is to display destinations, and initialize routing 
+
 import { useEffect, useState } from 'react';
 import TripBox from './TripBox';
 import WelcomeMessage from './WelcomeMessage';
@@ -8,8 +10,9 @@ import './App.scss';
 
 const TripContainer = (props) => {
 
-    const [dateResp, setDateResp] = useState({})
+    //const [dateResp, setDateResp] = useState({})
 
+    //array to hold initial destination information
     const tripArray = [
         {
             destName: "The Sword of Orion",
@@ -49,37 +52,41 @@ const TripContainer = (props) => {
         },
     ]
 
-    useEffect(() => {
+    // useEffect(() => {
 
-        const todayDate = new Date();
-        const dateFormatted = `${todayDate.getFullYear()}-${("0" + (todayDate.getMonth() + 1)).slice(-2)}-${("0" + todayDate.getDate()).slice(-2)}`
-        axios({
-            url: "https://api.nasa.gov/neo/rest/v1/feed?",
-            method: "GET",
-            dataResponse: "json",
-            params: {
-                api_key: "0vfR0cK5U5L4Afnbrb20dF1VAFDSQIm1KDZnbJ5g",
-                start_date: dateFormatted
-            }
-        }).then((response) => {
-            const hazardousObjects = response.data.near_earth_objects;
+    //     //retreiving and formatting dates for drop down date selector menu
+    //     const todayDate = new Date();
+    //     const dateFormatted = `${todayDate.getFullYear()}-${("0" + (todayDate.getMonth() + 1)).slice(-2)}-${("0" + todayDate.getDate()).slice(-2)}`
+    //     //API call to get safe date information
+    //     axios({
+    //         url: "https://api.nasa.gov/neo/rest/v1/feed?",
+    //         method: "GET",
+    //         dataResponse: "json",
+    //         params: {
+    //             api_key: "0vfR0cK5U5L4Afnbrb20dF1VAFDSQIm1KDZnbJ5g",
+    //             start_date: dateFormatted
+    //         }
+    //     }).then((response) => {
+    //         const hazardousObjects = response.data.near_earth_objects;
 
-            let tempArray = () => {
-                for (const object in hazardousObjects) {
-                    let loopArray = []
-                    hazardousObjects[object].forEach((d) => {
-                        if (d.estimated_diameter.kilometers.estimated_diameter_max >= 1.5) {
-                            loopArray.push(object);
-                        }
-                    })
-                }
-            }
-            tempArray = [...new Set(tempArray)];
+    //         //determining safety of certain dates with measurements of potentially hazardous objects
+    //         let tempArray = () => {
+    //             for (const object in hazardousObjects) {
+    //                 let loopArray = []
+    //                 hazardousObjects[object].forEach((d) => {
+    //                     if (d.estimated_diameter.kilometers.estimated_diameter_max >= 1.5) {
+    //                         loopArray.push(object);
+    //                     }
+    //                 })
+    //             }
+    //         }
+    //         tempArray = [...new Set(tempArray)];
 
-            setDateResp(tempArray)
-        });
+    //         //setting dates into state
+    //         setDateResp(tempArray)
+    //     });
 
-    }, []);
+    // }, []);
 
 
     return (
@@ -95,7 +102,7 @@ const TripContainer = (props) => {
                                     tripInfo={trip}
                                     handleClick={props.handleClick}
                                     buttonClass={props.buttonClass}
-                                    dateresp={dateResp}
+                                    //dateresp={dateResp}
                                     tripCounter={props.tripCounter}
                                 />
                             )

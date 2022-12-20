@@ -1,15 +1,20 @@
+//this component determines which dates are safe for travel, allows user's to book their in person tours, and saves their info to Firebase
+
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link, useParams } from 'react-router-dom';
+import app from './firebase';
+import { getDatabase, ref, push } from 'firebase/database';
+
+
 
 function Dates(props) {
 	const [dateResp, setDateResp] = useState([])
 	const [dateList, setDateList] = useState([]);
 	const [dates, setDates] = useState(false);
 	const { tripID } = useParams();
+	
 
-	// const [userName, setUserName] = useState("");
-	// const [userEmail, setEmail] = useState("");
 	const totalDates = 6;
 
 	useEffect(() => {
@@ -79,18 +84,37 @@ function Dates(props) {
 						isItSafe: true
 					})
 				}
-				// })
 			})
 			allDatesObject = [...new Set(allDatesObject)];
 			setDateResp(allDatesObject);
 		});
 		// eslint-disable-next-line
+
 	}, [dates]);
 
 
 	const submitHandler = (e) => {
+		//alert to confirm submission
+
 		e.preventDefault();
 		alert(`Thank you for your message, ${e.target.name.value}. We will be in touch shortly about your trip to ${tripID}.`)
+
+		//storing data in Firebase
+
+		const database = getDatabase(app);
+		const dbRef = ref(database);
+
+		let information = {
+			yeeting: e.target.name.value,
+			contact: e.target.email.value,
+			when: e.target.dates.value,
+			where: tripID
+		}
+
+		push(dbRef, information);
+
+
+
 	}
 
 	return (

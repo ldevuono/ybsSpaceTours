@@ -1,3 +1,5 @@
+//this component gathers information for the photos on the main page & routes to the individual tour and booking pages
+
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
@@ -11,6 +13,7 @@ const TripBox = (props) => {
 
   useEffect(() => {
 
+    //making the call to retrieve preview photos from API
     axios({
       url: `https://images-api.nasa.gov/asset/${props.tripInfo.imgCode}`,
       method: "GET",

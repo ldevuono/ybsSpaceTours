@@ -1,3 +1,5 @@
+
+
 import { useState } from 'react';
 
 import { Route, Routes } from 'react-router-dom';
@@ -14,6 +16,7 @@ import Footer from './Footer';
 
 function App() {
 
+//creating states to hold counter data & to make tour buttons unclickable after 3 tours
   const [tripCounter, setTripCounter] = useState(3)
   const [buttonFunction, setbuttonFunction] = useState('works')
 
