@@ -4,12 +4,16 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import './App.scss';
+import { getDatabase, ref, get } from 'firebase/database';
+import app from './firebase';
 
 const TripBox = (props) => {
 
   const [trip, setTrip] = useState({})
   // eslint-disable-next-line
   const [tourClass, setTourClass] = useState(props.buttonClass)
+  const [tripsBooked, setTripsBooked] = useState(0);
+
 
   useEffect(() => {
 
@@ -28,6 +32,35 @@ const TripBox = (props) => {
       })
     });
   }, [props.tripInfo.destName, props.tripInfo.imgCode]);
+
+  useEffect(() =>{
+    const database = getDatabase(app);
+		const dbRef = ref(database);
+
+    get(dbRef)
+    .then( (snapshot) => {
+      // check if there's a database
+      if(snapshot.exists()){
+        let counter = 0;
+        for (const item in snapshot.val()) {
+          const dbRefChild = ref(database, `/${item}`);
+          get(dbRefChild)
+          .then((snapshotChild) =>{
+            console.log(snapshotChild.val())
+          })
+          // console.log(snapshot.val());
+        }
+
+        // console.log(snapshot.val()[0]);
+        
+      } else {
+        
+      }
+    }).catch((error) => {
+      alert("No data available. Try reloading the page, or come back tomorrow because too many people are using this supper super fun app")
+      console.log(error)
+    })
+  },[])
 
 
   return (
@@ -65,6 +98,7 @@ const TripBox = (props) => {
             dateresp={props.dateResp}
           >Reserve a date</button></li>
         </Link>
+         <p className="tripsBooked">{tripsBooked} trips booked</p>
       </ul>
     </li>
   )
