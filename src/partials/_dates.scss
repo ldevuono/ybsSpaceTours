@@ -1,0 +1,63 @@
+@use "./variables";
+@use "./typography";
+
+.wrapper.datesWrapper {
+    p {
+        max-width: 500px;
+        &.extraMarginTop {
+            margin-top: 30px;
+        }
+    }
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    font-family: variables.$primaryFont;
+    font-size: 1rem;
+
+    input, select {
+        margin: 30px auto;
+        padding: 30px;
+        background-color: black;
+        color: variables.$tertiaryColour;
+        font-family: variables.$primaryFont;
+        width: 50%;
+        &::placeholder{
+            font-family: variables.$primaryFont;
+        }
+    }
+
+    .getDates a{
+        display: block;
+        width: 50%;
+        border: 3px solid variables.$tertiaryColour;
+        background-color: black;
+        padding: 15px 30px;
+        color: variables.$tertiaryColour;
+        text-decoration: none;
+        margin: 30px auto;
+        &:hover{
+            border-color:variables.$primaryColour;
+        }
+    }
+
+    .selectHide{
+        display: none;
+    }
+
+        button{
+            width: 50%;
+            margin: 30px auto;
+            padding: 15px 30px;
+        }
+}
+
+@media (max-width: 950px) { 
+    form {    
+        input, select {
+            width: 100%;
+        }
+    }
+}
