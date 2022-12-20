@@ -19,12 +19,15 @@ function Dates(props) {
 
 	useEffect(() => {
 		// eslint-disable-next-line
+
+		//getting the current date
 		Date.prototype.addDays = function (days) {
 			let date = new Date(this.valueOf());
 			date.setDate(date.getDate() + days);
 			return date;
 		}
 
+		
 		const getDates = (startDate, stopDate) => {
 			// eslint-disable-next-line
 			let dateArray = new Array();
@@ -39,7 +42,7 @@ function Dates(props) {
 		const todayDate = new Date();
 		setDateList(getDates(todayDate, (todayDate).addDays(totalDates)));
 
-
+		//retreiving info about space weather events from the API
 		axios({
 			url: "https://api.nasa.gov/neo/rest/v1/feed?",
 			method: "GET",
@@ -50,6 +53,7 @@ function Dates(props) {
 				start_date: `${todayDate.getFullYear()}-${("0" + (todayDate.getMonth() + 1)).slice(-2)}-${("0" + todayDate.getDate()).slice(-2)}`
 
 			}
+		//gets the diameter of near earth objects to determine safety for the traveller
 		}).then((response) => {
 			const hazardousObjects = response.data.near_earth_objects;
 			let tempArray = []
@@ -61,6 +65,8 @@ function Dates(props) {
 					}
 				})
 			}
+
+			//filtering out the duplicate dates from the API, reformatting the dates to be in ascending order
 			tempArray = [...new Set(tempArray)];
 			tempArray.sort(function (a, b) {
 				a = a.split('-').reverse().join('');
@@ -68,7 +74,7 @@ function Dates(props) {
 				return a > b ? 1 : a < b ? -1 : 0;
 			});
 
-
+			//creating new object that determines whether or not the date is safe for travelling
 			let allDatesObject = []
 			dateList.forEach((date, i) => {
 				const thisDate = `${date.getFullYear()}-${("0" + (date.getMonth() + 1)).slice(-2)}-${("0" + date.getDate()).slice(-2)}`;
@@ -92,14 +98,15 @@ function Dates(props) {
 
 	}, [dates]);
 
-
+	//form subbmission actions
+	//alert displayed to confirm that the user's info has been retrieved
 	const submitHandler = (e) => {
 		//alert to confirm submission
 
 		e.preventDefault();
 		alert(`Thank you for your message, ${e.target.name.value}. We will be in touch shortly about your trip to ${tripID}.`)
 
-		//storing data in Firebase
+		//storing submitted data in Firebase
 
 		const database = getDatabase(app);
 		const dbRef = ref(database);
