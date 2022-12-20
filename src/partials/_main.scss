@@ -5,7 +5,6 @@ header {
     padding: 20px;
 
     ul {
-        // display: flex;
         justify-content: space-between;
 
         img {
@@ -28,8 +27,6 @@ header {
         span {
             background-color: black;
             padding: 8px;
-            // transform: rotate(45deg);
-            // border-radius: 50%;
             display: inline-block;
         }
     }
@@ -46,7 +43,6 @@ header {
         display: flex;
         flex-direction: column;
         align-items: center;
-        // border: 10px solid variables.$tertiaryColour;
         padding: 30px;
 
 
@@ -142,8 +138,6 @@ footer {
 
     .wrapper {
         max-width: 100%;
-
-        // margin: 30px;
         p,
         h1 {
             width: 95%;
@@ -163,7 +157,6 @@ footer {
 @media (max-width: 700px) {
     .wrapper {
         max-width: 100%;
-        // margin: 30px;
     }
 
     header {

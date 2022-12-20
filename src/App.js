@@ -40,7 +40,6 @@ function App() {
     <div className="App">
       <div className="backgroundImg" />
       <header>
-        {/* img */}
         <ul>
           <li>
             <img src={logo} alt="" />
@@ -51,7 +50,6 @@ function App() {
         </ul>
       </header>
 
-      {/* desc */}
 
       <Routes>
         <Route path="/" element={
