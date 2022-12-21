@@ -42,14 +42,21 @@ const TripBox = (props) => {
       // check if there's a database
       if(snapshot.exists()){
         let counter = 0;
+        // console.log(snapshot.val());
         for (const item in snapshot.val()) {
           const dbRefChild = ref(database, `/${item}`);
           get(dbRefChild)
           .then((snapshotChild) =>{
-            console.log(snapshotChild.val())
+            // console.log(snapshotChild.val().where)
+            if (trip.dest === snapshotChild.val().where){
+              counter++;
+            }
+            setTripsBooked(counter);
           })
-          // console.log(snapshot.val());
+          // console.log(snapshot.val())
+          
         }
+  
 
         // console.log(snapshot.val()[0]);
         
@@ -57,7 +64,7 @@ const TripBox = (props) => {
         
       }
     }).catch((error) => {
-      alert("No data available. Try reloading the page, or come back tomorrow because too many people are using this supper super fun app")
+      alert("No data available. Try reloading the page, or come back tomorrow because too many people are using this super super fun app")
       console.log(error)
     })
   },[])
