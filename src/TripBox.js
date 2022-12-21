@@ -42,8 +42,6 @@ useEffect(() => {
     // check if there's a database
     if(snapshot.exists()){
       let counter = 0;
-
-      // console.log(snapshot);
       // Loop through each item in the object and check if .where destionation matches with trip.dest, if it does increment counter by 1
       snapshot.forEach((item) => {
         if(item.val().where === trip.dest) {
