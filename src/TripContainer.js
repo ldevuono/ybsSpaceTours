@@ -6,6 +6,7 @@ import './App.scss';
 
 
 
+
 const TripContainer = (props) => {
 
     //array to hold initial destination information
