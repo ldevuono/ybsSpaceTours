@@ -92,7 +92,7 @@ useEffect(() => {
             dateresp={props.dateResp}
           >Reserve a date</button></li>
         </Link>
-         <p className="tripsBooked">{tripsBooked} trips booked</p>
+         <p className="tripsBooked">{tripsBooked} trip(s) booked</p>
       </ul>
     </li>
   )
