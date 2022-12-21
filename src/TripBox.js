@@ -33,41 +33,30 @@ const TripBox = (props) => {
     });
   }, [props.tripInfo.destName, props.tripInfo.imgCode]);
 
-  useEffect(() =>{
-    const database = getDatabase(app);
-		const dbRef = ref(database);
+useEffect(() => {
+  const database = getDatabase(app);
+  const dbRef = ref(database);
 
-    get(dbRef)
-    .then( (snapshot) => {
-      // check if there's a database
-      if(snapshot.exists()){
-        let counter = 0;
-        // console.log(snapshot.val());
-        for (const item in snapshot.val()) {
-          const dbRefChild = ref(database, `/${item}`);
-          get(dbRefChild)
-          .then((snapshotChild) =>{
-            // console.log(snapshotChild.val().where)
-            if (trip.dest === snapshotChild.val().where){
-              counter++;
-            }
-            setTripsBooked(counter);
-          })
-          // console.log(snapshot.val())
-          
+  get(dbRef)
+  .then((snapshot) => {
+    // check if there's a database
+    if(snapshot.exists()){
+      let counter = 0;
+
+      // console.log(snapshot);
+      // Loop through each item in the object and check if .where destionation matches with trip.dest, if it does increment counter by 1
+      snapshot.forEach((item) => {
+        if(item.val().where === trip.dest) {
+          counter++;
         }
-  
-
-        // console.log(snapshot.val()[0]);
-        
-      } else {
-        
-      }
-    }).catch((error) => {
-      alert("No data available. Try reloading the page, or come back tomorrow because too many people are using this super super fun app")
-      console.log(error)
-    })
-  },[])
+        setTripsBooked(counter);
+      });
+    }
+  }).catch((error) => {
+    alert("No data available. Try reloading the page, or come back tomorrow because too many people are using this super super fun app");
+    console.log(error);
+  });
+}, [trip.dest]);
 
 
   return (
