@@ -14,7 +14,7 @@ const WelcomeMessage = () => {
           <p>We are currently limiting virtual tours to 3 per day. Once you've clicked "Start Virtual Tour", that will count as one tour, so choose wisely!</p>
         </div>
         <div className="extraInstructions">
-          <p>If you have found a destination that you're satisfied with and would like to tour in person, please go to Reserve a Date. We have ensured that all the available dates are free of major space weather events, and will be safe and enjoyable.</p>
+          <p>If you have found a destination that you're satisfied with and would like to tour in person, please click through to reserve a date. We have ensured that all the available dates are free of major space weather events, and will be safe and enjoyable.</p>
         </div>
       </div>
 
