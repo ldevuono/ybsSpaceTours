@@ -16,11 +16,11 @@ const TripContainer = (props) => {
             imgCode: "PIA08653"
         },
         {
-            destName: "Crab Nebula",
+            destName: "The Crab Nebula",
             imgCode: "PIA03606"
         },
         {
-            destName: "Milky way",
+            destName: "The Milky way",
             imgCode: "PIA12348"
         },
         {
@@ -44,7 +44,7 @@ const TripContainer = (props) => {
             imgCode: "PIA01383"
         },
         {
-            destName: "Sun",
+            destName: "The Sun",
             imgCode: "GSFC_20171208_Archive_e001434"
         },
     ]
