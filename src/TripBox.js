@@ -33,28 +33,28 @@ const TripBox = (props) => {
     });
   }, [props.tripInfo.destName, props.tripInfo.imgCode]);
 
-useEffect(() => {
-  const database = getDatabase(app);
-  const dbRef = ref(database);
+  useEffect(() => {
+    const database = getDatabase(app);
+    const dbRef = ref(database);
 
-  get(dbRef)
-  .then((snapshot) => {
-    // check if there's a database
-    if(snapshot.exists()){
-      let counter = 0;
-      // Loop through each item in the object and check if .where destionation matches with trip.dest, if it does increment counter by 1
-      snapshot.forEach((item) => {
-        if(item.val().where === trip.dest) {
-          counter++;
+    get(dbRef)
+      .then((snapshot) => {
+        // check if there's a database
+        if (snapshot.exists()) {
+          let counter = 0;
+          // Loop through each item in the object and check if .where destionation matches with trip.dest, if it does increment counter by 1
+          snapshot.forEach((item) => {
+            if (item.val().where === trip.dest) {
+              counter++;
+            }
+            setTripsBooked(counter);
+          });
         }
-        setTripsBooked(counter);
+      }).catch((error) => {
+        alert("No data available. Try reloading the page, or come back tomorrow because too many people are using this super super fun app");
+        console.log(error);
       });
-    }
-  }).catch((error) => {
-    alert("No data available. Try reloading the page, or come back tomorrow because too many people are using this super super fun app");
-    console.log(error);
-  });
-}, [trip.dest]);
+  }, [trip.dest]);
 
 
   return (
@@ -64,7 +64,7 @@ useEffect(() => {
         <h3>{trip.dest}</h3>
       </div>
       <div className="imgContainer">
-        <img src={trip.imgLink} alt={`the beautiful ${trip.dest}`} />
+        <img src={trip.imgLink} alt={`${trip.dest}`} />
       </div>
       <ul className='buttonContainer'>
         {
@@ -92,7 +92,7 @@ useEffect(() => {
             dateresp={props.dateResp}
           >Reserve a date</button></li>
         </Link>
-         <p className="tripsBooked">{tripsBooked} trip(s) booked</p>
+        <p className="tripsBooked">{tripsBooked} trip(s) booked</p>
       </ul>
     </li>
   )
