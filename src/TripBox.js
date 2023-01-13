@@ -64,7 +64,7 @@ const TripBox = (props) => {
         <h3>{trip.dest}</h3>
       </div>
       <div className="imgContainer">
-        <img src={trip.imgLink} alt={`${trip.dest}`} />
+        <img src={trip.imgLink} alt={trip.dest} />
       </div>
       <ul className='buttonContainer'>
         {
