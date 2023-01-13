@@ -2,13 +2,14 @@
 @use "./typography";
 
 header {
-    padding: 20px;
+    padding: 10px;
 
     ul {
+        // display: flex;
         justify-content: space-between;
 
         img {
-            width: 400px;
+            width: 350px;
         }
 
         .tripCounter {
@@ -70,6 +71,7 @@ header {
 .extraInstructions {
     width: 80%;
     margin: 0 auto;
+    font-size: 1rem;
 }
 
 .instructions,
@@ -78,7 +80,7 @@ header {
 }
 
 .welcomeMessage {
-    padding: 30px 30px 0 30px;
+    padding: 15px 30px 0 30px;
 }
 
 footer {
@@ -86,7 +88,8 @@ footer {
         a {
             color: variables.$tertiaryColour;
             text-decoration: none;
-            &:hover, 
+
+            &:hover,
             &:focus,
             &:focus-within {
                 color: variables.$secondaryColour;
@@ -138,6 +141,7 @@ footer {
 
     .wrapper {
         max-width: 100%;
+
         p,
         h1 {
             width: 95%;
@@ -180,7 +184,7 @@ footer {
             padding: 0;
             position: relative;
 
-            .tripsBooked{
+            .tripsBooked {
                 background-color: black;
                 padding: 4px 8px;
                 width: 230px;
@@ -191,7 +195,7 @@ footer {
                 padding: 4px 8px;
                 margin-top: 30px;
 
-                h3{
+                h3 {
                     margin: 0 auto;
                 }
             }

@@ -24,6 +24,7 @@ body {
   max-width: 1440px;
   width: 100%;
   margin: 60px auto 0;
+
   p {
     max-width: 700px;
     margin: 0 auto;
@@ -84,10 +85,11 @@ button.doesntWork {
   }
 }
 
-@media (max-width: 950px) { 
+@media (max-width: 950px) {
   .wrapper {
     max-width: 90%;
     margin: 60px auto 0;
+
     p {
       max-width: 100%;
       margin: 0 auto;
@@ -99,6 +101,6 @@ button.doesntWork {
 
 @media (max-width: 800px) {
   .wrapper {
-      max-width: 100%;
+    max-width: 100%;
   }
 }
