@@ -8,17 +8,17 @@ import { getDatabase, ref, push } from 'firebase/database';
 
 
 
-function Dates(props) {
+function Dates() {
 	const [dateResp, setDateResp] = useState([])
 	const [dateList, setDateList] = useState([]);
 	const [dates, setDates] = useState(false);
 	const { tripID } = useParams();
-	
+
 
 	const totalDates = 6;
 
 	useEffect(() => {
-		
+
 
 		//getting the current date
 		//eslint-disable-next-line
@@ -28,7 +28,7 @@ function Dates(props) {
 			return date;
 		}
 
-		
+
 		const getDates = (startDate, stopDate) => {
 			// eslint-disable-next-line
 			let dateArray = new Array();
@@ -54,7 +54,7 @@ function Dates(props) {
 				start_date: `${todayDate.getFullYear()}-${("0" + (todayDate.getMonth() + 1)).slice(-2)}-${("0" + todayDate.getDate()).slice(-2)}`
 
 			}
-		//gets the diameter of near earth objects to determine safety for the traveller
+			//gets the diameter of near earth objects to determine safety for the traveller
 		}).then((response) => {
 			const hazardousObjects = response.data.near_earth_objects;
 			let tempArray = []

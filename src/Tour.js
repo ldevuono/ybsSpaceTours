@@ -21,7 +21,7 @@ const Tour = () => {
             params: {
                 q: tripID
             }
-        //array for the images on the tour page
+            //array for the images on the tour page
         }).then((response) => {
             setResArray(response.data.collection.items)
         });
@@ -31,11 +31,11 @@ const Tour = () => {
     return (
         <div>
             <h1>{tripID}</h1>
-            <ul className='goBackButton'>
+            <div className='goBackButton'>
                 <Link to={`/`}>
-                    <li><button>Go back</button></li>
+                    <button>Go back</button>
                 </Link>
-            </ul>
+            </div>
             <div className="wrapper">
                 <ul>{/*slicing the image array to be a maximum of 10 images*/}
                     {resArray.slice(0, 10).map((trip) => {

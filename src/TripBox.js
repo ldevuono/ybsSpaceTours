@@ -52,7 +52,6 @@ const TripBox = (props) => {
         }
       }).catch((error) => {
         alert("No data available. Try reloading the page, or come back tomorrow because too many people are using this super super fun app");
-        console.log(error);
       });
   }, [trip.dest]);
 
