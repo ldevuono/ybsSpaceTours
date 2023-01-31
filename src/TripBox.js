@@ -83,7 +83,6 @@ const TripBox = (props) => {
             </Link>
         }
 
-
         <Link to={`/dates/${trip.dest}`}>
           <li><button
             dateresp={props.dateResp}
