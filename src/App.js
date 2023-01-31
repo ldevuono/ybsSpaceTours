@@ -3,20 +3,20 @@
 import { useState } from 'react';
 
 import { Route, Routes } from 'react-router-dom';
-import TripContainer from './TripContainer';
+import TripContainer from './components/TripContainer';
 
-import Tour from './Tour';
-import Dates from './Dates';
+import Tour from './components/Tour';
+import Dates from './components/Dates';
 
 import './App.scss';
 import logo from './assets/ybs-logo.svg';
-import Footer from './Footer';
+import Footer from './components/Footer';
 
 
 
 function App() {
 
-//creating states to hold counter data & to make tour buttons unclickable after 3 tours
+  //creating states to hold counter data & to make tour buttons unclickable after 3 tours
   const [tripCounter, setTripCounter] = useState(3)
   const [buttonFunction, setbuttonFunction] = useState('works')
 

@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link, useParams } from 'react-router-dom';
-import app from './firebase';
+import app from '../firebase';
 import { getDatabase, ref, push } from 'firebase/database';
 
 
@@ -119,9 +119,6 @@ function Dates() {
 		}
 
 		push(dbRef, information);
-
-
-
 	}
 
 	return (

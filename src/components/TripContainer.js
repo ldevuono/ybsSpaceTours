@@ -2,7 +2,7 @@
 
 import TripBox from './TripBox';
 import WelcomeMessage from './WelcomeMessage';
-import './App.scss';
+import '../App.scss';
 
 
 

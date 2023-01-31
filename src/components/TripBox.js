@@ -3,9 +3,9 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import './App.scss';
+import '../App.scss';
 import { getDatabase, ref, get } from 'firebase/database';
-import app from './firebase';
+import app from '../firebase';
 
 const TripBox = (props) => {
 
