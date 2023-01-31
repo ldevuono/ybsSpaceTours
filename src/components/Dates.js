@@ -3,8 +3,8 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link, useParams } from 'react-router-dom';
-import app from '../firebase';
-import { getDatabase, ref, push } from 'firebase/database';
+// import app from '../firebase';
+// import { getDatabase, ref, push } from 'firebase/database';
 
 
 
@@ -98,7 +98,7 @@ function Dates() {
 		// eslint-disable-next-line
 	}, [dates]);
 
-	//form subbmission actions
+	//form submission actions
 	//alert displayed to confirm that the user's info has been retrieved
 	const submitHandler = (e) => {
 		//alert to confirm submission
@@ -108,17 +108,17 @@ function Dates() {
 
 		//storing submitted data in Firebase
 
-		const database = getDatabase(app);
-		const dbRef = ref(database);
+		// 	const database = getDatabase(app);
+		// 	const dbRef = ref(database);
 
-		let information = {
-			yeeting: e.target.name.value,
-			contact: e.target.email.value,
-			when: e.target.dates.value,
-			where: tripID
-		}
+		// 	let information = {
+		// 		yeeting: e.target.name.value,
+		// 		contact: e.target.email.value,
+		// 		when: e.target.dates.value,
+		// 		where: tripID
+		// 	}
 
-		push(dbRef, information);
+		// 	push(dbRef, information);
 	}
 
 	return (
@@ -168,8 +168,6 @@ function Dates() {
 				</form>
 
 			</div>
-			{/* end of tupac */}
-
 		</div>
 	)
 }
