@@ -33,25 +33,25 @@ const TripBox = (props) => {
     });
   }, [props.tripInfo.destName, props.tripInfo.imgCode]);
 
-  useEffect(() => {
-    const database = getDatabase(app);
-    const dbRef = ref(database);
+  // useEffect(() => {
+  //   const database = getDatabase(app);
+  //   const dbRef = ref(database);
 
-    get(dbRef)
-      .then((snapshot) => {
-        // check if there's a database
-        if (snapshot.exists()) {
-          let counter = 0;
-          // Loop through each item in the object and check if .where destionation matches with trip.dest, if it does increment counter by 1
-          snapshot.forEach((item) => {
-            if (item.val().where === trip.dest) {
-              counter++;
-            }
-            setTripsBooked(counter);
-          });
-        }
-      });
-  }, [trip.dest]);
+  //   get(dbRef)
+  //     .then((snapshot) => {
+  //       // check if there's a database
+  //       if (snapshot.exists()) {
+  //         let counter = 0;
+  //         // Loop through each item in the object and check if .where destionation matches with trip.dest, if it does increment counter by 1
+  //         snapshot.forEach((item) => {
+  //           if (item.val().where === trip.dest) {
+  //             counter++;
+  //           }
+  //           setTripsBooked(counter);
+  //         });
+  //       }
+  //     });
+  // }, [trip.dest]);
 
 
   return (
@@ -89,7 +89,7 @@ const TripBox = (props) => {
             dateresp={props.dateResp}
           >Reserve a date</button></li>
         </Link>
-        <p className="tripsBooked">{tripsBooked} trip(s) booked</p>
+        {/* <p className="tripsBooked">{tripsBooked} trip(s) booked</p> */}
       </ul>
     </li>
   )
