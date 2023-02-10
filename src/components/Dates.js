@@ -3,8 +3,8 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link, useParams } from 'react-router-dom';
-// import app from '../firebase';
-// import { getDatabase, ref, push } from 'firebase/database';
+import firebase from '../firebase';
+import { getDatabase, ref, push } from 'firebase/database';
 
 
 
@@ -94,6 +94,7 @@ function Dates() {
 			})
 			allDatesObject = [...new Set(allDatesObject)];
 			setDateResp(allDatesObject);
+			console.log(dateResp)
 		});
 		// eslint-disable-next-line
 	}, [dates]);
@@ -108,17 +109,17 @@ function Dates() {
 
 		//storing submitted data in Firebase
 
-		// 	const database = getDatabase(app);
-		// 	const dbRef = ref(database);
+		const database = getDatabase(firebase);
+		const dbRef = ref(database);
 
-		// 	let information = {
-		// 		yeeting: e.target.name.value,
-		// 		contact: e.target.email.value,
-		// 		when: e.target.dates.value,
-		// 		where: tripID
-		// 	}
+		let information = {
+			yeeting: e.target.name.value,
+			contact: e.target.email.value,
+			when: e.target.dates.value,
+			where: tripID
+		}
 
-		// 	push(dbRef, information);
+		push(dbRef, information);
 	}
 
 	return (
@@ -131,7 +132,7 @@ function Dates() {
 			<div className="wrapper datesWrapper">
 				<p>Please fill out the form and select a date from the list below. We will contact you with more details.</p>
 				<p>All available dates have been cleared of any dangerous space weather events by NASA.</p>
-				<p className='extraMarginTop'>Non-selectable dates are deemed unsafe for travel.</p>
+				<p className='extraMarginTop'>Non-selectable dates are deemed unsafe for travel. If there are no selectable dates, send us your name and email and we will get back to you when the space events have passed. </p>
 				<form onSubmit={submitHandler}>
 					<label htmlFor="name" className="sr-only">Name</label>
 					<input type="text" name="name" id="name" placeholder="Name" required />
@@ -147,7 +148,6 @@ function Dates() {
 						id="dates"
 						name="dates"
 						defaultValue={""}
-						required={true}
 					>
 						<option value="" disabled>Choose a date</option>
 						{dateResp.map((date) => {

@@ -10,9 +10,7 @@ const Tour = () => {
     const { tripID } = useParams();
     const [resArray, setResArray] = useState([])
 
-
     useEffect(() => {
-
         //call to get images
         axios({
             url: "https://images-api.nasa.gov/search",
